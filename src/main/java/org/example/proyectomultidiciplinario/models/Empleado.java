@@ -5,4 +5,6 @@ public class Empleado {
     protected String apellidoPaterno;
     protected String apellidoMaterno;
     protected String edad;
+    protected String NobreUsuario;
+    protected String password;
 }
