@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.proyectomultidiciplinario/org.example.proyectomultidiciplinario.HelloApplication
+                                org.example.proyectomultidiciplinario/org.example.proyectomultidiciplinario.GestorOrdenesApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
