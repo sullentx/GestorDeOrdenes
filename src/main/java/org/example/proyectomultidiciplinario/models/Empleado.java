@@ -8,6 +8,9 @@ public class Empleado {
     protected String apellidoMaterno;
     protected String nombreUser;
     protected String password;
+    protected String edad;
+    protected String NobreUsuario;
+
 
 
     public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password) {
