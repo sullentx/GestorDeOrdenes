@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="435.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.MenuController">
+   <children>
+      <AnchorPane prefHeight="45.0" prefWidth="867.0" style="-fx-background-color: #ffd503;">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/EsabLogo-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbMostrarUser" layoutX="574.0" layoutY="6.0" prefHeight="40.0" prefWidth="175.0" text="Es bueno tenerlo de vuelta">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnCerrarSesion" layoutX="755.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#btnCerrarSesion" prefHeight="33.0" prefWidth="103.0" style="-fx-background-color: black;" text="Cerrar Sesion" textFill="WHITE" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="achListaEmpleado" layoutX="44.0" layoutY="56.0" prefHeight="129.0" prefWidth="175.0">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="80.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/icons8-lista-100.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnListaEmpleados" layoutX="19.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#btnListaEmpleados" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #ffd503; -fx-background-radius: 44px;" text="Ver lista de Empleados" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchDeparamento" layoutX="658.0" layoutY="45.0" prefHeight="113.0" prefWidth="182.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="119.0" layoutX="59.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/icons8-edificios-de-la-ciudad-80.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnListaDepartamento" layoutX="30.0" layoutY="59.0" mnemonicParsing="false" onMouseClicked="#btnListaDepartamento" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #ffd503; -fx-background-radius: 44px;" text="Ver Departamentos" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="346.0" layoutY="169.0" prefHeight="127.0" prefWidth="175.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="106.0" layoutX="53.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/icons8-crear-orden-100.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnCrearOt" layoutX="24.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#btnCrearOt" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #ffd503; -fx-background-radius: 44px;" text="Crear Orden" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="44.0" layoutY="265.0" prefHeight="98.0" prefWidth="203.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="103.0" layoutX="62.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/icons8-ver-96.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnVerListaOT" layoutX="33.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#btnVerListaOT" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #ffd503; -fx-background-radius: 44px;" text="Ver Lista de O.T" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchGraficaDatos" layoutX="636.0" layoutY="259.0" prefHeight="162.0" prefWidth="203.0">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="153.0" layoutX="49.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/icons8-analistica-web-80.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="bntGraficaDatos" layoutX="32.0" layoutY="112.0" mnemonicParsing="false" onMouseClicked="#bntGraficaDatos" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #ffd503; -fx-background-radius: 44px;" text="Ver Grafica De Datos" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
