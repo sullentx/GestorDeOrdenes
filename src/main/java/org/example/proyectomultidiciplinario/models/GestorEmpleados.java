@@ -92,6 +92,12 @@ public class GestorEmpleados {
 
     }
 
+    public boolean eliminarAdmin(String admin){
+        if (buscarAdministrador(admin)!=-1){
+            listaAdmin.remove(buscarAdministrador(admin));
+            return true;
+        }else
+            return false;
     }
     public boolean verificacion(String name, String password) {
         for (Empleado empleado : listaAdmin) {
