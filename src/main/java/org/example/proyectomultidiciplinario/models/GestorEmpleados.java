@@ -38,6 +38,10 @@ public class GestorEmpleados {
 
     }
 
+    public ArrayList<Empleado> getListaEmpleado() {
+        return listaEmpleado;
+    }
+
     public ArrayList<Empleado> getListaAdmin() {
         return listaAdmin;
     }

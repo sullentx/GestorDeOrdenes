@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
 import org.example.proyectomultidiciplinario.models.GestorEmpleados;
+import org.example.proyectomultidiciplinario.models.GestorOrdenes;
 
 import java.io.IOException;
 
@@ -47,6 +48,7 @@ public class MenuController {
     @FXML
     private AnchorPane anchGraficaDatos;
 
+
    //Logea Empleado, desabilitar Anchor pane de grafica de datos y lista de empleados
     public void ocultarForEmpleado(){
         anchDeparamento.setDisable(true);
@@ -70,6 +72,7 @@ public class MenuController {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("ot-view.fxml"));
         try {
+
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);
             stage.setTitle("Registro de usuarios");
@@ -78,8 +81,7 @@ public class MenuController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+
     }
 
     @FXML
@@ -94,14 +96,20 @@ public class MenuController {
 
     @FXML
     void btnVerListaOT(MouseEvent event) {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listOT-view.fxml"));
+        try {
+            listOTController listOTController = fxmlLoader.getController();
 
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Lista de OT");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-
-
-
-
-
 
     public void setGestorEmpleados(GestorEmpleados gestorEmpleados){
         this.gestorEmpleados=gestorEmpleados;
