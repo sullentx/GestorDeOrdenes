@@ -83,6 +83,7 @@ public class LoginEmpleadoController {
                         MenuController menuController = fxmlLoader.getController();
                         menuController.setListaEmpleado(listaEmpleado);
                         menuController.setListaAdmin(listaAdmin);
+                        menuController.initialize();
                         menuController.setCuentasLogeadas(cuentasLogeadas);
                         menuController.ocultarForEmpleado();
                         stage.setScene(scene);

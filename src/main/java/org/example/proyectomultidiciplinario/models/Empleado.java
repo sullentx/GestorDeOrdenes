@@ -52,9 +52,6 @@ public class Empleado {
         return password;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
     public String getApellidoPaterno() {
         return apellidoPaterno;
