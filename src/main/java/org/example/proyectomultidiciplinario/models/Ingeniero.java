@@ -15,17 +15,20 @@ public class Ingeniero extends Empleado{
 
     @Override
     public String toString() {
-        return "Ingeniero{" +
-                "tituloIngeniero='" + tituloIngeniero + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellidoPaterno='" + apellidoPaterno + '\'' +
-                ", apellidoMaterno='" + apellidoMaterno + '\'' +
-                ", nombreUser='" + nombreUser + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Ingeniero:");
+        stringBuilder.append("  Nombre: ").append(nombre).append("\n");
+        stringBuilder.append("  Apellido Paterno: ").append(apellidoPaterno).append("\n");
+        stringBuilder.append("  Apellido Materno: ").append(apellidoMaterno).append("\n");
+        stringBuilder.append("  Nombre de Usuario: ").append(nombreUser).append("\n");
+        stringBuilder.append("  Contraseña: ").append(password).append("\n");
+        return stringBuilder.toString();
     }
+
+
 
     public void setTituloIngeniero(String tituloIngeniero) {
         this.tituloIngeniero = tituloIngeniero;
     }
+
 }

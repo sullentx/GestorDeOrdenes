@@ -1,6 +1,7 @@
 module org.example.proyectomultidiciplinario {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens org.example.proyectomultidiciplinario to javafx.fxml;
