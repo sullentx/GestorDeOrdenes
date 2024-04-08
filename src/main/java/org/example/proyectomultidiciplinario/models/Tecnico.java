@@ -1,6 +1,6 @@
 package org.example.proyectomultidiciplinario.models;
 
-public class Tecnico extends Empleado{
+public class Tecnico extends Empleado {
     private String cedulaTecnica;
 
     public Tecnico(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password, String cedulaTecnica) {
@@ -17,15 +17,23 @@ public class Tecnico extends Empleado{
         this.cedulaTecnica = cedulaTecnica;
     }
 
+    public boolean verificarUser(String nombreUsuario) {
+        return this.nombreUser.equals(nombreUsuario);
+    }
+
+
+
     @Override
     public String toString() {
-        return "Tecnico{" +
-                "cedulaTecnica='" + cedulaTecnica + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellidoPaterno='" + apellidoPaterno + '\'' +
-                ", apellidoMaterno='" + apellidoMaterno + '\'' +
-                ", nombreUser='" + nombreUser + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Técnico:");
+        stringBuilder.append("  Nombre: ").append(nombre).append("\n");
+        stringBuilder.append("  Apellido Paterno: ").append(apellidoPaterno).append("\n");
+        stringBuilder.append("  Apellido Materno: ").append(apellidoMaterno).append("\n");
+        stringBuilder.append("  Nombre de Usuario: ").append(nombreUser).append("\n");
+        stringBuilder.append("  Contraseña: ").append(password).append("\n");
+        return stringBuilder.toString();
     }
+
+
 }

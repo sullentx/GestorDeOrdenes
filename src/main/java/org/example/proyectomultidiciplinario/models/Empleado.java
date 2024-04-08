@@ -1,6 +1,7 @@
 package org.example.proyectomultidiciplinario.models;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Empleado {
     protected String nombre;
@@ -8,9 +9,6 @@ public class Empleado {
     protected String apellidoMaterno;
     protected String nombreUser;
     protected String password;
-    protected String edad;
-    protected String NobreUsuario;
-
 
 
     public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password) {
@@ -45,16 +43,28 @@ public class Empleado {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Empleado{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidoPaterno='" + apellidoPaterno + '\'' +
-                ", apellidoMaterno='" + apellidoMaterno + '\'' +
-                ", nombreUser='" + nombreUser + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+
+    public String getNombreUser() {
+        return nombreUser;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -67,14 +77,6 @@ public class Empleado {
     @Override
     public int hashCode() {
         return Objects.hash(nombreUser, password);
-    }
-
-    public String getNombreUser() {
-        return nombreUser;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
 
