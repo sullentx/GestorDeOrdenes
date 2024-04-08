@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(17, 32, 45);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.ListaEmpleadosComunesController">
+    <children>
+        <AnchorPane prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: rgb(247, 229, 76);">
+            <children>
+                <Label layoutX="235.0" layoutY="11.0" text="Registro de Administradores">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="59.0" fitWidth="58.0" layoutX="17.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../imagenes/elbueno.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnVolver" layoutX="746.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#btnVolver" prefHeight="34.0" prefWidth="139.0" style="-fx-background-color: black;" text="Volver al menu" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <ListView fx:id="ltsEmpleados" layoutX="40.0" layoutY="177.0" onMouseClicked="#ltsEmpleados" prefHeight="247.0" prefWidth="523.0" />
+        <VBox layoutX="678.0" layoutY="210.0" prefHeight="132.0" prefWidth="208.0">
+            <children>
+                <TextField fx:id="txtNombre">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </TextField>
+                <TextField fx:id="txtApePaterno">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </TextField>
+                <TextField fx:id="txtApeMaterno">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </TextField>
+                <TextField fx:id="txtNameUser">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </TextField>
+                <TextField fx:id="txtPassword">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </TextField>
+            </children>
+        </VBox>
+        <Button fx:id="btnEliminar" layoutX="69.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnEliminar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-radius: 44px; -fx-background-color: ffffff;" text="Eliminar" />
+        <Button fx:id="btnLimpiar" layoutX="358.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnLimpiar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Limpiar" />
+        <Button fx:id="btnModificar" layoutX="216.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnModificar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Modificar" />
+        <Button fx:id="btnMostrarLista" layoutX="171.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#btnMostrarLista" prefHeight="25.0" prefWidth="208.0" style="-fx-background-color: black;" text="Mostrar Lista Administradores" textFill="WHITE" />
+        <Label layoutX="627.0" layoutY="216.0" prefHeight="17.0" prefWidth="105.0" text="Nombre" textFill="WHITE" />
+        <Label fx:id="txtApellidoPaterno" layoutX="587.0" layoutY="251.0" prefHeight="17.0" prefWidth="105.0" text="Apellido Paterno" textFill="WHITE" />
+        <Label layoutX="584.0" layoutY="285.0" prefHeight="17.0" prefWidth="105.0" text="Apellido Materno" textFill="WHITE" />
+        <Label layoutX="574.0" layoutY="323.0" prefHeight="17.0" prefWidth="105.0" text="Nombre de usuario" textFill="WHITE" />
+        <Label layoutX="614.0" layoutY="357.0" prefHeight="17.0" prefWidth="105.0" text="Contraseña" textFill="WHITE" />
+        <Button fx:id="btnGuardar" layoutX="723.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#btnGuardar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Guardar" />
+    </children>
+</AnchorPane>
