@@ -80,4 +80,7 @@ public class Empleado {
     }
 
 
+    public String getNombre() {
+        return this.nombre;
+    }
 }

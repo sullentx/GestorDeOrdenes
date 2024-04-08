@@ -1,25 +1,25 @@
 package org.example.proyectomultidiciplinario.controller;
 
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
+import org.example.proyectomultidiciplinario.models.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.example.proyectomultidiciplinario.models.GestorEmpleados;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class OtController implements Initializable {
 
     @FXML
     private TextField txtEquipR;
     private GestorEmpleados gestorEmpleados;
 
     @FXML
-    private TextArea txtFallaR;
+    private TextArea txtFallaE;
 
     @FXML
-    private TextArea txtFallaR1;
+    private TextArea txtFallaR;
 
     @FXML
     private TextField txtFecha;
@@ -34,15 +34,19 @@ public class OtController implements Initializable {
     private TextField txtHoraInicio;
 
     @FXML
-    private TextField txtTurno;
-
-    @FXML
     private TextField txtUbiEquipo;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private int folioContador = 0;
+
+
+    private GestorOrdenes ot = new GestorOrdenes();
+
+    GestorEmpleados empleadoDato = new GestorEmpleados();
+    ArrayList<Empleado> lstEmpleado = empleadoDato.getListaEmpleado();
+
+
+
 
     }
-
 
     public void setGestorEmpleados(GestorEmpleados gestorEmpleados){
         this.gestorEmpleados=gestorEmpleados;

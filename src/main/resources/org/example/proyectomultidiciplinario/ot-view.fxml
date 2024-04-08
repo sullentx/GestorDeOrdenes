@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="931.0" style="-fx-background-color: #ECE4D7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="931.0" style="-fx-background-color: #ECE4D7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.OtController">
    <children>
       <Label layoutX="33.0" layoutY="44.0" text="Fecha" />
       <Label layoutX="33.0" layoutY="108.0" text="Turno" />
@@ -19,29 +19,30 @@
       <Label layoutX="54.0" layoutY="232.0" text="Ubicacion del equipo" />
       <Label layoutX="32.0" layoutY="275.0" text="Encargado de Mantenimiento" />
       <Label layoutX="331.0" layoutY="275.0" text="Opero" />
-      <TextField fx:id="txtFecha" layoutX="114.0" layoutY="40.0" prefHeight="26.0" prefWidth="113.0" />
-      <TextField fx:id="txtFolio" layoutX="756.0" layoutY="33.0" />
-      <TextField fx:id="txtTurno" layoutX="100.0" layoutY="104.0" />
+      <TextField fx:id="txtFecha" editable="false" layoutX="114.0" layoutY="40.0" prefHeight="26.0" prefWidth="113.0" />
+      <TextField fx:id="txtFolio" editable="false" layoutX="756.0" layoutY="33.0" />
       <TextField fx:id="txtEquipR" layoutX="227.0" layoutY="178.0" />
       <TextField fx:id="txtUbiEquipo" layoutX="227.0" layoutY="228.0" />
       <TextArea fx:id="txtFallaR" layoutX="540.0" layoutY="124.0" prefHeight="160.0" prefWidth="370.0" />
       <Label layoutX="572.0" layoutY="291.0" text="Descripción del trabajo que se realizo (Falla encontrada)" />
-      <TextArea fx:id="txtFallaR1" layoutX="540.0" layoutY="335.0" prefHeight="160.0" prefWidth="370.0" />
-      <ChoiceBox layoutX="35.0" layoutY="300.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" />
-      <ChoiceBox layoutX="272.0" layoutY="313.0" prefWidth="150.0" style="-fx-background-color: #ADABAB;" />
-      <ChoiceBox layoutX="273.0" layoutY="353.0" prefWidth="150.0" style="-fx-background-color: #ADABAB;" />
-      <ChoiceBox layoutX="272.0" layoutY="393.0" prefWidth="150.0" style="-fx-background-color: #ADABAB;" />
+      <TextArea fx:id="txtFallaE" layoutX="540.0" layoutY="335.0" prefHeight="160.0" prefWidth="370.0" />
       <Label layoutX="101.0" layoutY="370.0" text="Hora de Inicio" />
       <Label layoutX="94.0" layoutY="446.0" text="Hora de Fin" />
-      <TextField fx:id="txtHoraInicio" layoutX="75.0" layoutY="405.0" prefHeight="26.0" prefWidth="100.0" />
-      <TextField fx:id="txtHoraFin" layoutX="75.0" layoutY="468.0" prefHeight="26.0" prefWidth="100.0" />
-      <Label layoutX="259.0" layoutY="473.0" text="Estatus" />
-      <Button layoutX="340.0" layoutY="442.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="Terminado" />
-      <Button layoutX="340.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: #484643;" text="Guardar OT" textFill="WHITE" />
+      <TextField fx:id="txtHoraInicio" editable="false" layoutX="75.0" layoutY="405.0" prefHeight="26.0" prefWidth="100.0" />
+      <TextField fx:id="txtHoraFin" editable="false" layoutX="75.0" layoutY="468.0" prefHeight="26.0" prefWidth="100.0" />
+      <Label layoutX="253.0" layoutY="446.0" text="Estatus" />
+      <Button fx:id="guardar" layoutX="253.0" layoutY="481.0" mnemonicParsing="false" onMouseClicked="#guardar" style="-fx-background-color: #484643;" text="Guardar" textFill="WHITE" />
       <ImageView fitHeight="166.0" fitWidth="150.0" layoutX="377.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../imagenes/ESAB_LOGO.jpg" />
          </image>
       </ImageView>
+      <ComboBox fx:id="cmbxEM" layoutX="39.0" layoutY="313.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" />
+      <ComboBox fx:id="cmbxOp1" layoutX="272.0" layoutY="313.0" prefWidth="150.0" style="-fx-background-color: #ADABAB;" />
+      <ComboBox fx:id="cmbxOp2" layoutX="272.0" layoutY="357.0" prefWidth="150.0" style="-fx-background-color: #ADABAB;" />
+      <ComboBox fx:id="cmbxOp3" layoutX="272.0" layoutY="402.0" prefWidth="150.0" style="-fx-background-color: #ADABAB;" />
+      <ComboBox fx:id="cmbxTurno" layoutX="100.0" layoutY="104.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" />
+      <ComboBox fx:id="cmbxEstatus" layoutX="312.0" layoutY="442.0" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" />
+      <Button fx:id="nuevaOT" layoutX="382.0" layoutY="482.0" mnemonicParsing="false" onMouseClicked="#nuevaOT" style="-fx-background-color: #484643;" text="Nueva OT" textFill="WHITE" />
    </children>
 </AnchorPane>

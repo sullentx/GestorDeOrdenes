@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="931.0" style="-fx-background-color: #ECE4D7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.listOTController">
+   <children>
+      <ImageView fitHeight="132.0" fitWidth="134.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../imagenes/ESAB_LOGO.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="294.0" layoutY="14.0" prefHeight="92.0" prefWidth="343.0" text="Ordenes de Trabajo">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblOT" layoutY="101.0" prefHeight="354.0" prefWidth="931.0">
+        <columns>
+          <TableColumn fx:id="colFolio" prefWidth="75.0" text="Folio" />
+          <TableColumn fx:id="colTurno" prefWidth="75.0" text="Turno" />
+            <TableColumn fx:id="colEquipoRepotrtado" prefWidth="138.4000244140625" text="Equipo que se Reporto" />
+            <TableColumn fx:id="colUbiEquipo" prefWidth="126.4000244140625" text="Ubicacion del Equipo" />
+            <TableColumn fx:id="colFallaReportada" minWidth="8.79998779296875" prefWidth="95.19998168945312" text="Falla Reportada" />
+            <TableColumn fx:id="colFallaEncontrada" prefWidth="98.39996337890625" text="Falla Encontrada" />
+            <TableColumn fx:id="colOperadores" prefWidth="72.0" text="Operadores" />
+            <TableColumn fx:id="colEncargadoMant" prefWidth="173.5999755859375" text="Encargado de Mantenimiento" />
+            <TableColumn fx:id="colEstatus" prefWidth="75.2000732421875" text="Estatus" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnActualizar" layoutX="350.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#btnActualizar" text="Actualizar Tabla" />
+   </children>
+</AnchorPane>
