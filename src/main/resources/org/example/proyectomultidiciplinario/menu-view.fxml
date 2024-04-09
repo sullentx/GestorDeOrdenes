@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" prefHeight="484.0" prefWidth="883.0" style="-fx-background-color: q;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.MenuController">
+<AnchorPane focusTraversable="true" prefHeight="484.0" prefWidth="883.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.MenuController">
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="883.0" style="-fx-background-color: rgb(247, 229, 76);">
          <children>
@@ -40,10 +41,10 @@
                   <Image url="@../../../imagenes/icons8-department-100.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnListaDepartamento" layoutX="30.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#btnListaDepartamento" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Departamentos" />
+            <Button fx:id="btnListaDepartamento" layoutX="30.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#btnListaDepartamento" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Departamentos" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="368.0" layoutY="271.0" prefHeight="152.0" prefWidth="195.0">
+      <AnchorPane layoutX="342.0" layoutY="270.0" prefHeight="152.0" prefWidth="195.0">
          <children>
             <ImageView fitHeight="100.0" fitWidth="91.0" layoutX="47.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,8 +66,8 @@
       </AnchorPane>
       <AnchorPane fx:id="anchGraficaDatos" layoutX="657.0" layoutY="271.0" prefHeight="150.0" prefWidth="203.0">
          <children>
-            <Button fx:id="bntGraficaDatos" layoutX="32.0" layoutY="112.0" mnemonicParsing="false" onMouseClicked="#bntGraficaDatos" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Grafica De Datos" />
-            <ImageView fitHeight="100.0" fitWidth="91.0" layoutX="54.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="bntGraficaDatos" layoutX="41.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#bntGraficaDatos" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Grafica De Datos" />
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../imagenes/icons8-financial-dynamic-presentation-96.png" />
                </image>
@@ -75,13 +76,15 @@
       </AnchorPane>
       <AnchorPane fx:id="achListaEmpleado1" layoutX="344.0" layoutY="60.0" prefHeight="129.0" prefWidth="175.0">
          <children>
-            <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="57.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../imagenes/icons8-lista-100.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnListaEmpleados" layoutX="19.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#btnListaEmpleados" prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver lista de Empleados" />
+            <Button fx:id="btnListaEmpleados" layoutX="9.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#btnListaEmpleados" prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver lista de Empleados" />
          </children>
       </AnchorPane>
+      <Separator layoutX="239.0" layoutY="46.0" orientation="VERTICAL" prefHeight="437.0" prefWidth="20.0" />
+      <Separator layoutX="598.0" layoutY="46.0" orientation="VERTICAL" prefHeight="437.0" prefWidth="20.0" />
    </children>
 </AnchorPane>

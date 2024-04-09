@@ -119,15 +119,6 @@ public class ListaEmpleadosComunesController  {
     }
 
     @FXML
-    void btnMostrarLista(MouseEvent event){
-        ObservableList<String> items = FXCollections.observableArrayList();
-        for (Empleado empleado : listaEmpleado) {
-            items.add(empleado.toString());
-        }
-        ltsEmpleados.setItems(items);
-    }
-
-    @FXML
     void btnEliminar(MouseEvent event) {
         int selectedIndex = ltsEmpleados.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -146,7 +137,6 @@ public class ListaEmpleadosComunesController  {
             alert.showAndWait();
         }
     }
-
 
 
     @FXML
@@ -193,5 +183,13 @@ public class ListaEmpleadosComunesController  {
     }
 
     public void ltsEmpleados(MouseEvent event) {
+        actualizarLista();
+    }
+    public void mostrarAlerta(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Seleccionar");
+        alert.setHeaderText(null);
+        alert.setContentText("Seleccione la lista para ver el contenido");
+        alert.showAndWait();
     }
 }

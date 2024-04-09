@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -62,7 +60,6 @@ public class MenuIncialController  {
             loginAdministradorController.setListaAdmin(listaAdmin);
             loginAdministradorController.setListaEmpleado(listaEmpleado);
             loginAdministradorController.setCuentasLogeadas(cuentasLogeadas);
-
             loginAdministradorController.initialize();
             stage.setScene(scene);
             stage.show();
