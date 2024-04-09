@@ -169,7 +169,6 @@ public class RegistroEmpleadoController {
                         loginEmpleadoController.setListaEmpleado(listaEmpleado);
                         loginEmpleadoController.setListaAdmin(listaAdmin);
                         loginEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
-
                         loginEmpleadoController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -198,7 +197,6 @@ public class RegistroEmpleadoController {
             menuIncialController.setListaEmpleado(listaEmpleado);
             menuIncialController.setListaAdmin(listaAdmin);
             menuIncialController.setCuentasLogeadas(cuentasLogeadas);
-
             menuIncialController.initialize();
             stage.setScene(scene);
             stage.show();

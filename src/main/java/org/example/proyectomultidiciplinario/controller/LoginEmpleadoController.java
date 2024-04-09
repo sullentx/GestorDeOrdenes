@@ -1,6 +1,8 @@
 package org.example.proyectomultidiciplinario.controller;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,7 +34,6 @@ public class LoginEmpleadoController {
     private int cuentasLogeadas;
 
 
-
     public void setCuentasLogeadas(int cuentasLogeadas) {
         this.cuentasLogeadas = cuentasLogeadas;
     }
@@ -56,6 +57,7 @@ public class LoginEmpleadoController {
             registroEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
             registroEmpleadoController.initialize();
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -84,8 +86,10 @@ public class LoginEmpleadoController {
                         menuController.setListaEmpleado(listaEmpleado);
                         menuController.setListaAdmin(listaAdmin);
                         menuController.setCuentasLogeadas(cuentasLogeadas);
+                        menuController.initialize();
                         menuController.ocultarForEmpleado();
                         stage.setScene(scene);
+                        stage.setResizable(false);
                         stage.show();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -105,7 +109,6 @@ public class LoginEmpleadoController {
         }
 
     }
-
 
 
     public void initialize() {

@@ -28,15 +28,14 @@ public class MenuController {
     @FXML
     private AnchorPane achListaEmpleado1;
 
+    @FXML
+    private Label lbMostrarUser;
 
     @FXML
     private AnchorPane anchGraficaDatos;
     private ArrayList<Empleado> listaAdmin;
     private ArrayList<Empleado>listaEmpleado;
     private int cuentasLogeadas;
-
-
-
 
 
     public void setCuentasLogeadas(int cuentasLogeadas) {
@@ -110,12 +109,13 @@ public class MenuController {
         try {
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);
-            stage.setTitle("Registro de usuarios");
+            stage.setTitle("ESAB");
             ListaEmpleadosController listaEmpleadosController =fxmlLoader.getController();
             listaEmpleadosController.setListaAdmin(listaAdmin);
             listaEmpleadosController.setListaEmpleado(listaEmpleado);
             listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
             listaEmpleadosController.initialize();
+            listaEmpleadosController.mostrarAlerta();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -152,6 +152,8 @@ public class MenuController {
             listaEmpleadosComunesController.setCuentasLogeadas(cuentasLogeadas);
             listaEmpleadosComunesController.setListaAdmin(listaAdmin);
             listaEmpleadosComunesController.initialize();
+            listaEmpleadosComunesController.mostrarAlerta();
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
