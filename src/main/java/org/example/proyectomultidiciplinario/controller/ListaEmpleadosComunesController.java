@@ -56,9 +56,7 @@ public class ListaEmpleadosComunesController  {
 
     private int cuentasLogeadas;
 
-    public void setBtnGuardar(Button btnGuardar) {
-        this.btnGuardar = btnGuardar;
-    }
+
 
     public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
         this.listaAdmin = listaAdmin;
@@ -193,5 +191,29 @@ public class ListaEmpleadosComunesController  {
     }
 
     public void ltsEmpleados(MouseEvent event) {
+            actualizarLista();
+    }
+
+    public void btnAgregar(MouseEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("agregarEmpleados.fxml"));
+        Stage stage = new Stage();
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Registro de Empleados");
+            AgregarEmpleadosController agregarEmpleadosController = fxmlLoader.getController();
+            agregarEmpleadosController.setListaEmpleado(listaEmpleado);
+            agregarEmpleadosController.setListaAdmin(listaAdmin);
+            agregarEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+            agregarEmpleadosController.initialize();
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 }

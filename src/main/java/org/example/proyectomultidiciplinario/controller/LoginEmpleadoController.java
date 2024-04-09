@@ -64,7 +64,6 @@ public class LoginEmpleadoController {
         stage = (Stage) source.getScene().getWindow();stage.close();
     }
 
-
     public void btnIniciarSesion(MouseEvent event){
         if (listaEmpleado.isEmpty()||txtNombreUser.getText().isEmpty()||txtPassword.getText().isEmpty()){
             alerta.setTitle("Error");
@@ -73,8 +72,10 @@ public class LoginEmpleadoController {
             alerta.showAndWait();
         }else {
             int cuentasLogeadas = 0;
+            boolean usuarioValido= false;
             for (Empleado empleado: listaEmpleado){
                 if (empleado.getNombreUser().equals(txtNombreUser.getText())&&empleado.getPassword().equals(txtPassword.getText())){
+                    usuarioValido = true;
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menu-view.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
@@ -93,16 +94,15 @@ public class LoginEmpleadoController {
                     }
                     Node source = (Node) event.getSource();
                     stage = (Stage) source.getScene().getWindow();stage.close();
-
-                }else {
-                    alerta.setTitle("Error");
-                    alerta.setHeaderText("Error al inicar sesion");
-                    alerta.setContentText("Contraseña o usuario incorrecto");
-                    alerta.showAndWait();
                 }
                 cuentasLogeadas++;
             }
-
+            if (!usuarioValido) {
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Error al inicar sesion");
+                alerta.setContentText("Contraseña o usuario incorrecto");
+                alerta.showAndWait();
+            }
         }
 
     }

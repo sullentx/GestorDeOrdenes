@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: rgb(17, 32, 45);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.AgregarEmpleadosController">
+
+<children>
+<AnchorPane layoutX="-2.0" layoutY="-1.0" prefHeight="558.0" prefWidth="269.0" style="-fx-background-color: black;">
+    <children>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../imagenes/EsabLogo-removebg-preview.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
+<VBox layoutX="444.0" layoutY="177.0" prefHeight="202.0" prefWidth="286.0">
+    <children>
+        <TextField fx:id="txtNombre" promptText="Nombre/s">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+        <TextField fx:id="txtApellidoPaterno" promptText="Apellido Paterno">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </TextField>
+        <TextField fx:id="txtApeMaterno" promptText="Apellido Materno">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </TextField>
+        <TextField fx:id="txtTipoEmpleado" disable="true" promptText="Cedula Tecnica o Titulo Ingenieria">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </TextField>
+        <TextField fx:id="txtNombreUsuario" promptText="Nombre de usuario">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </TextField>
+        <TextField fx:id="txtPassword" promptText="Contraseña">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </TextField>
+    </children>
+</VBox>
+<CheckBox fx:id="cbTecnico" layoutX="667.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#cbTecnico" prefHeight="17.0" prefWidth="73.0" style="-fx-background-color: ffffff;" text="Tecnico">
+    <cursor>
+        <Cursor fx:constant="HAND" />
+    </cursor></CheckBox>
+<CheckBox fx:id="cbIngeniero" layoutX="667.0" layoutY="135.0" mnemonicParsing="false" onMouseClicked="#cbIngeniero" style="-fx-background-color: ffffff;" text="Ingeniero">
+    <cursor>
+        <Cursor fx:constant="HAND" />
+    </cursor></CheckBox>
+<Button fx:id="btnGuardar" layoutX="505.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#btnGuardar" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(34, 84, 145);" text="Guardar Empleado" textFill="WHITE">
+    <cursor>
+        <Cursor fx:constant="HAND" />
+    </cursor></Button>
+<Label layoutX="387.0" layoutY="185.0" text="Nombre/s" textFill="#e6e6e6" />
+<Label layoutX="351.0" layoutY="260.0" text="Apellido Materno" textFill="WHITE" />
+<Label fx:id="lbTipoEmpleado" layoutX="347.0" layoutY="291.0" prefHeight="17.0" prefWidth="101.0" text="Seleccione tipo de trabajador" textFill="WHITE" />
+<Label layoutX="338.0" layoutY="326.0" text="Nombre de usuario" textFill="WHITE" />
+<Label layoutX="353.0" layoutY="223.0" text="Apellido Paterno" textFill="WHITE" />
+<Label layoutX="382.0" layoutY="361.0" text="Contraseña" textFill="WHITE" />
+<Label alignment="CENTER" layoutX="267.0" layoutY="15.0" prefHeight="33.0" prefWidth="559.0" style="-fx-background-color: rgb(251, 232, 8);" text="Registro de Empleados">
+    <font>
+        <Font name="Century" size="19.0" />
+    </font>
+</Label>
+</children>
+        </AnchorPane>

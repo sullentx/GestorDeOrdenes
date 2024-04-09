@@ -152,7 +152,7 @@ public class ListaEmpleadosController  {
 
 
     public void ltsAdministradores(MouseEvent event) {
-
+        actualizarLista();
     }
 
     @FXML
@@ -191,7 +191,28 @@ public class ListaEmpleadosController  {
         ltsAdministradores.setItems(items);
     }
 
-
+    public void btnAgregar(MouseEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("agregarAdministradores.fxml"));
+        Stage stage = new Stage();
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Registro de Empleados");
+            AgregarAdministradoresController agregarAdministradoresController = fxmlLoader.getController();
+            agregarAdministradoresController.setListaEmpleado(listaEmpleado);
+            agregarAdministradoresController.setListaAdmin(listaAdmin);
+            agregarAdministradoresController.setCuentasLogeadas(cuentasLogeadas);
+            agregarAdministradoresController.initialize();
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;

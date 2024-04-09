@@ -72,5 +72,6 @@
       <Label layoutX="574.0" layoutY="323.0" prefHeight="17.0" prefWidth="105.0" text="Nombre de usuario" textFill="WHITE" />
       <Label layoutX="614.0" layoutY="357.0" prefHeight="17.0" prefWidth="105.0" text="Contraseña" textFill="WHITE" />
       <Button fx:id="btnGuardar" layoutX="723.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#btnGuardar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Guardar" />
+      <Button fx:id="btnAgregar" layoutX="515.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnAgregar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Agregar" />
    </children>
 </AnchorPane>

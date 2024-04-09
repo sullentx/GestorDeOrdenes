@@ -74,8 +74,10 @@ public class LoginAdministradorController {
             alerta.showAndWait();
         }else {
             int cuentasLogeadas = 0;
+            boolean usuarioValido = false;
             for (Empleado empleado: listaAdmin){
                 if (empleado.getNombreUser().equals(txtNombreUser.getText())&&empleado.getPassword().equals(txtPassword.getText())){
+                    usuarioValido = true;
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menu-view.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
@@ -95,16 +97,16 @@ public class LoginAdministradorController {
                     Node source = (Node) event.getSource();
                     stage = (Stage) source.getScene().getWindow();stage.close();
 
-                }else{
-                    Alert alerta = new Alert(Alert.AlertType.ERROR);
-                    alerta.setTitle("Error");
-                    alerta.setHeaderText("Error al inicar sesion");
-                    alerta.setContentText("Contraseña o usuario incorrecto");
-                    alerta.showAndWait();
                 }
                 cuentasLogeadas++;
             }
-
+            if (!usuarioValido) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Error al inicar sesion");
+                alerta.setContentText("Contraseña o usuario incorrecto");
+                alerta.showAndWait();
+            }
         }
 
 
