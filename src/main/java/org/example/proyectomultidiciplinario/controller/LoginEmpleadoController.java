@@ -87,6 +87,7 @@ public class LoginEmpleadoController {
                         menuController.setCuentasLogeadas(cuentasLogeadas);
                         menuController.initialize();
                         menuController.ocultarForEmpleado();
+                        menuController.setEmpleado(listaEmpleado.get(cuentasLogeadas));
                         stage.setScene(scene);
                         stage.setResizable(false);
                         stage.show();

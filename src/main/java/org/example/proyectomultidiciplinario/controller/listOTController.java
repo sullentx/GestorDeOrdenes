@@ -73,7 +73,7 @@ public class listOTController implements Initializable {
 
     private ArrayList<Departamento>lstDepa;
     private GestorOrdenes gestorOrdenes;
-
+    private Empleado empleado;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbxModEstatus.getItems().addAll("Pendiente","Pendiente Urgente","Terminado");
@@ -184,12 +184,15 @@ public class listOTController implements Initializable {
             stage.show();
 
             MenuController menuController = fxmlLoader.getController();
-
             menuController.setListaAdmin(listaAdmin);
             menuController.setListaEmpleado(listaEmpleado);
             menuController.setCuentasLogeadas(cuentasLogeadas);
             menuController.setLstDepa(lstDepa);
             GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
+            if (empleado != null){
+                menuController.setEmpleado(empleado);
+                menuController.ocultarForEmpleado();
+            }
             menuController.setLstOT(gestorOrdenes);
             menuController.initialize();
         } catch (IOException e) {
@@ -220,6 +223,9 @@ public class listOTController implements Initializable {
 
     public void setCuentasLogeadas(int cuentasLogeadas) {
         this.cuentasLogeadas = cuentasLogeadas;
+    }
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }
 
