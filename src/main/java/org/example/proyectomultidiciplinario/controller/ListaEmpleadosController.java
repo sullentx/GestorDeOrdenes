@@ -2,24 +2,30 @@ package org.example.proyectomultidiciplinario.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
+import org.example.proyectomultidiciplinario.models.GestorEmpleados;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
 public class ListaEmpleadosController  {
     public Button btnVolver ;
-
+    public Button btnMostrarLista;
     @FXML
     private Button btnGuardar;
 
@@ -28,7 +34,6 @@ public class ListaEmpleadosController  {
 
     @FXML
     private TextField txtApePaterno;
-
 
     @FXML
     private TextField txtNameUser;
@@ -46,22 +51,11 @@ public class ListaEmpleadosController  {
 
     private int cuentasLogeadas;
 
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
-
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
-
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
+    private ArrayList<Departamento>lstDepa;
 
 
 
-
-    @FXML
+        @FXML
         void btnLimpiar(MouseEvent event) {
         txtNombre.clear();
         txtApePaterno.clear();
@@ -76,6 +70,7 @@ public class ListaEmpleadosController  {
 
         if (selectedIndex >= 0) {
             Empleado empleadoSeleccionado = listaAdmin.get(selectedIndex);
+
             txtNombre.setText(empleadoSeleccionado.getNombre());
             txtApePaterno.setText(empleadoSeleccionado.getApellidoPaterno());
             txtApeMaterno.setText(empleadoSeleccionado.getApellidoMaterno());
@@ -105,6 +100,11 @@ public class ListaEmpleadosController  {
         }
     }
 
+        @FXML
+        void btnMostrarLista(MouseEvent event){
+          actualizarLista();
+       }
+
     @FXML
     void btnEliminar(MouseEvent event) {
         int selectedIndex = ltsAdministradores.getSelectionModel().getSelectedIndex();
@@ -125,9 +125,10 @@ public class ListaEmpleadosController  {
         }
     }
 
+
+
     public void ltsAdministradores(MouseEvent event) {
         actualizarLista();
-
     }
 
     @FXML
@@ -142,6 +143,7 @@ public class ListaEmpleadosController  {
             menuController.setListaEmpleado(listaEmpleado);
             menuController.setListaAdmin(listaAdmin);
             menuController.setCuentasLogeadas(cuentasLogeadas);
+            menuController.setLstDepa(lstDepa);
             menuController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -154,7 +156,10 @@ public class ListaEmpleadosController  {
         stage.close();
     }
 
+    @FXML
+    void btnGuardar(MouseEvent event) {
 
+    }
     public void actualizarLista(){
         ObservableList<String> items = FXCollections.observableArrayList();
         for (Empleado empleado : listaAdmin) {
@@ -163,17 +168,46 @@ public class ListaEmpleadosController  {
         ltsAdministradores.setItems(items);
     }
 
-
-    public void mostrarAlerta(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Seleccionar");
-        alert.setHeaderText(null);
-        alert.setContentText("Seleccione la lista para ver el contenido");
-        alert.showAndWait();
+    public void btnAgregar(MouseEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("agregarAdministradores.fxml"));
+        Stage stage = new Stage();
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Registro de Empleados");
+            AgregarAdministradoresController agregarAdministradoresController = fxmlLoader.getController();
+            agregarAdministradoresController.setListaEmpleado(listaEmpleado);
+            agregarAdministradoresController.setListaAdmin(listaAdmin);
+            agregarAdministradoresController.setCuentasLogeadas(cuentasLogeadas);
+            agregarAdministradoresController.setLstDepa(lstDepa);
+            agregarAdministradoresController.initialize();
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-
     public void initialize() {
         this.listaAdmin = listaAdmin;
+        this.listaEmpleado = listaEmpleado;
+        this.lstDepa = lstDepa;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
         this.listaEmpleado = listaEmpleado;
     }
 }

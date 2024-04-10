@@ -1,12 +1,13 @@
 package org.example.proyectomultidiciplinario.controller;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -17,14 +18,13 @@ import org.example.proyectomultidiciplinario.models.Ingeniero;
 import org.example.proyectomultidiciplinario.models.Tecnico;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class RegistroEmpleadoController {
+public class AgregarEmpleadosController {
+
+
     private ArrayList<Empleado> listaEmpleado;
     private ArrayList<Empleado> listaAdmin;
-
 
     @FXML
     private CheckBox cbIngeniero;
@@ -56,6 +56,22 @@ public class RegistroEmpleadoController {
 
     private ArrayList<Departamento>lstDepa;
 
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+
+
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
+
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
 
     @FXML
     void btnGuardar(MouseEvent event) {
@@ -95,17 +111,17 @@ public class RegistroEmpleadoController {
                     ingeniero.setPassword(txtPassword.getText());
                     txtNombreUsuario.clear();
                     listaEmpleado.add(ingeniero);
-                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginEmpleado.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleadosComunes.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
                         Scene scene = new Scene(root);
-                        stage.setTitle("Iniciar sesion");
-                        LoginEmpleadoController loginEmpleadoController = fxmlLoader.getController();
-                        loginEmpleadoController.setListaEmpleado(listaEmpleado);
-                        loginEmpleadoController.setListaAdmin(listaAdmin);
-                        loginEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
-                        loginEmpleadoController.setLstDepa(lstDepa);
-                        loginEmpleadoController.initialize();
+                        stage.setTitle("ESAB");
+                        ListaEmpleadosComunesController listaEmpleadosComunesController = fxmlLoader.getController();
+                        listaEmpleadosComunesController.setListaEmpleado(listaEmpleado);
+                        listaEmpleadosComunesController.setListaAdmin(listaAdmin);
+                        listaEmpleadosComunesController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosComunesController.setLstDepa(lstDepa);
+                        listaEmpleadosComunesController.initialize();
                         stage.setScene(scene);
                         stage.show();
                         stage.setResizable(false);
@@ -154,17 +170,17 @@ public class RegistroEmpleadoController {
                     tecnico.setPassword(txtPassword.getText());
                     txtNombreUsuario.clear();
                     listaEmpleado.add(tecnico);
-                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginEmpleado.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleadosComunes.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
                         Scene scene = new Scene(root);
-                        stage.setTitle("Iniciar sesion");
-                        LoginEmpleadoController loginEmpleadoController = fxmlLoader.getController();
-                        loginEmpleadoController.setListaEmpleado(listaEmpleado);
-                        loginEmpleadoController.setListaAdmin(listaAdmin);
-                        loginEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
-                        loginEmpleadoController.setLstDepa(lstDepa);
-                        loginEmpleadoController.initialize();
+                        stage.setTitle("ESAB");
+                        ListaEmpleadosComunesController listaEmpleadosComunesController = fxmlLoader.getController();
+                        listaEmpleadosComunesController.setListaEmpleado(listaEmpleado);
+                        listaEmpleadosComunesController.setListaAdmin(listaAdmin);
+                        listaEmpleadosComunesController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosComunesController.setLstDepa(lstDepa);
+                        listaEmpleadosComunesController.initialize();
                         stage.setScene(scene);
                         stage.show();
                         stage.setResizable(false);
@@ -178,31 +194,6 @@ public class RegistroEmpleadoController {
 
             }
         }
-    }
-
-    public void btnIrMenu(MouseEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menuInicial.fxml"));
-        Stage stage;
-        try {
-            Pane root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage = new Stage();
-            stage.setTitle("Registro de Empleados");
-            MenuIncialController menuIncialController = fxmlLoader.getController();
-            menuIncialController.setListaEmpleado(listaEmpleado);
-            menuIncialController.setListaAdmin(listaAdmin);
-            menuIncialController.setCuentasLogeadas(cuentasLogeadas);
-            menuIncialController.setLstDepa(lstDepa);
-            menuIncialController.initialize();
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();
-        stage.close();
     }
     @FXML
     void cbIngeniero(MouseEvent event) {
@@ -236,21 +227,4 @@ public class RegistroEmpleadoController {
         this.listaEmpleado = listaEmpleado;
         this.lstDepa = lstDepa;
     }
-
-    public void setLstDepa(ArrayList<Departamento> lstDepa) {
-        this.lstDepa = lstDepa;
-    }
-
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
-
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
-
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
 }
-

@@ -1,5 +1,6 @@
 package org.example.proyectomultidiciplinario.controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
@@ -11,10 +12,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
 
 
@@ -24,6 +25,9 @@ public class MenuIncialController  {
     private int cuentasLogeadas;
     private ArrayList<Empleado>listaEmpleado = new ArrayList<>();
     private ArrayList<Empleado>listaAdmin = new ArrayList<>();
+    private ArrayList<Departamento>lstDepa = new ArrayList<>();
+
+
 
     @FXML
     void bntIREmpleado(MouseEvent event) {
@@ -37,6 +41,7 @@ public class MenuIncialController  {
             loginEmpleadoController.setListaEmpleado(listaEmpleado);
             loginEmpleadoController.setListaAdmin(listaAdmin);
             loginEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
+            loginEmpleadoController.setLstDepa(lstDepa);
             loginEmpleadoController.initialize();
             stage.setScene(scene);
             stage.setResizable(false);
@@ -60,6 +65,7 @@ public class MenuIncialController  {
             loginAdministradorController.setListaAdmin(listaAdmin);
             loginAdministradorController.setListaEmpleado(listaEmpleado);
             loginAdministradorController.setCuentasLogeadas(cuentasLogeadas);
+            loginAdministradorController.setLstDepa(lstDepa);
             loginAdministradorController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -87,6 +93,7 @@ public class MenuIncialController  {
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
+        this.lstDepa = lstDepa;
     }
 
     public void setCuentasLogeadas(int cuentasLogeadas) {
@@ -98,5 +105,8 @@ public class MenuIncialController  {
     }
     public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
         this.listaAdmin = listaAdmin;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
     }
 }
