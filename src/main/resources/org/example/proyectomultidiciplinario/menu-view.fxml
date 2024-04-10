@@ -64,7 +64,6 @@
                 <Button fx:id="btnVerListaOT" layoutX="33.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#btnVerListaOT" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Lista de O.T" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="anchGraficaDatos" layoutX="657.0" layoutY="271.0" prefHeight="150.0" prefWidth="203.0" />
         <AnchorPane fx:id="achListaEmpleado1" layoutX="344.0" layoutY="60.0" prefHeight="129.0" prefWidth="175.0">
             <children>
                 <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="57.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">

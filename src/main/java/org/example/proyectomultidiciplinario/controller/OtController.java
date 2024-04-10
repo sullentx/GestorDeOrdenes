@@ -68,6 +68,8 @@ public class OtController implements Initializable {
     private int cuentasLogeadas;
     private ArrayList<Departamento>lstDepa;
 
+    private Empleado empleado;
+
     public ObservableList<OrdenDeTrabajo> obtenerOrdenesTrabajo() {
         GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
         return FXCollections.observableArrayList(gestorOrdenes.getLstOT());
@@ -117,6 +119,10 @@ public class OtController implements Initializable {
             txtHoraFin.setText(horaFin);
 
             ot.guardarOT(nuevaOT);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+                alerta.setTitle("Orden  creada");
+                alerta.setHeaderText("Orden de trabajo guardada exitosamente");
+                alerta.showAndWait();
             for (OrdenDeTrabajo orden : ot.getLstOT()) {
                 System.out.println(orden);
             }
@@ -189,14 +195,16 @@ public class OtController implements Initializable {
             stage.setTitle("Crear OT");
             stage.setScene(scene);
             stage.show();
-
             MenuController menuController = fxmlLoader.getController();
-
             menuController.setListaAdmin(listaAdmin);
             menuController.setListaEmpleado(listaEmpleado);
             menuController.setCuentasLogeadas(cuentasLogeadas);
             menuController.setLstDepa(lstDepa);
             menuController.initialize();
+            if (empleado != null){
+                menuController.setEmpleado(empleado);
+                menuController.ocultarForEmpleado();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -318,5 +326,9 @@ public class OtController implements Initializable {
         this.listaEmpleado = listaEmpleado;
         this.cuentasLogeadas = cuentasLogeadas;
         this.lstDepa = lstDepa;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }

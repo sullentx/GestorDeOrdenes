@@ -41,11 +41,12 @@ public class MenuController {
     private GestorOrdenes gestorOrdenes;
     private ArrayList<Departamento> lstDepa;
 
+    private Empleado empleado;
+
 
     public void ocultarForEmpleado() {
         anchDeparamento.setDisable(true);
         achListaEmpleado.setDisable(true);
-        anchGraficaDatos.setDisable(true);
         achListaEmpleado1.setDisable(true);
     }
 
@@ -95,6 +96,7 @@ public class MenuController {
             otController.setListaEmpleado(listaEmpleado);
             otController.setCuentasLogeadas(cuentasLogeadas);
             otController.setLstDepa(lstDepa);
+            otController.setEmpleado(empleado);
 
             otController.initialize();
         } catch (IOException e) {
@@ -169,6 +171,7 @@ public class MenuController {
             listOTController.setListaEmpleado(listaEmpleado);
             listOTController.setCuentasLogeadas(cuentasLogeadas);
             listOTController.setLstDepa(lstDepa);
+            listOTController.setEmpleado(empleado);
             GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
 
             listOTController.setLstOT(gestorOrdenes);
@@ -235,4 +238,7 @@ public class MenuController {
     }
 
 
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
 }
