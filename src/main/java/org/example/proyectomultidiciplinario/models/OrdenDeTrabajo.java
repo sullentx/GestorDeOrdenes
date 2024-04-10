@@ -12,6 +12,9 @@ public class OrdenDeTrabajo {
     private String fallaReportada;
     private int folioContador = 0;
     private String folio;
+
+
+
     private ArrayList <String> turno = new ArrayList<>();
     private ArrayList <String> estatus = new ArrayList<>();
 
@@ -55,6 +58,26 @@ public class OrdenDeTrabajo {
         this.folio = folio;
     }
 
+    public String getEquipoReportado() {
+        return equipoReportado;
+    }
+
+    public String getUbicacionEquipo() {
+        return ubicacionEquipo;
+    }
+
+    public String getFallaEncontrada() {
+        return fallaEncontrada;
+    }
+
+    public String getFallaReportada() {
+        return fallaReportada;
+    }
+
+    public int getFolioContador() {
+        return folioContador;
+    }
+
     public OrdenDeTrabajo(String equipoReportado, String ubicacionEquipo, String fallaEncontrada, String fallaReportada) {
         this.equipoReportado = equipoReportado;
         this.ubicacionEquipo = ubicacionEquipo;
@@ -62,9 +85,6 @@ public class OrdenDeTrabajo {
         this.fallaReportada = fallaReportada;
 }
 
-    public void incrementarFolioContador() {
-        folioContador = (folioContador % 999) + 1;
-    }
     public String generarFolio(int contador) {
         String fechaActual = obtenerFechaActual().replace("/", "");
         String contadorFolio = String.format("%03d", contador);
