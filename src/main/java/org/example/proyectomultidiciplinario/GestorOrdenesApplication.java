@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.controller.*;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,14 +23,18 @@ public class GestorOrdenesApplication extends Application {
     private MenuController menuController = new MenuController();
     private ListaEmpleadosController listaEmpleadosController = new ListaEmpleadosController();
     private ListaEmpleadosComunesController listaEmpleadosComunesController = new ListaEmpleadosComunesController();
+
     private OtController otController = new OtController();
+
+    private AgregarDepartamentosController agregarDepartamentosController = new AgregarDepartamentosController();
+
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menuInicial.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         MenuIncialController menuIncialController = fxmlLoader.getController();
-        stage.setTitle("Gestor de empleados");
+        stage.setTitle("ESAB");
         stage.setScene(scene);
         stage.show();
         menuIncialController.initialize();
@@ -39,7 +45,11 @@ public class GestorOrdenesApplication extends Application {
         registroAdministradorController.initialize();
         registroEmpleadoController.initialize();
         menuController.initialize();
+
         otController.initialize();
+
+        agregarDepartamentosController.initialize();
+
         stage.setResizable(false);
     }
 

@@ -1,5 +1,6 @@
 package org.example.proyectomultidiciplinario.controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
 
@@ -28,19 +30,12 @@ public class LoginAdministradorController {
     private TextField txtPassword;
     private ArrayList<Empleado> listaAdmin;
     private ArrayList<Empleado> listaEmpleado;
+
     private Stage stage = new Stage();
     private int cuentasLogeadas;
 
+    private ArrayList<Departamento>lstDepa;
 
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
 
     public void btnAgregarUsers(MouseEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("registroAdministrador.fxml"));
@@ -52,6 +47,7 @@ public class LoginAdministradorController {
             registroAdministradorController.setListaAdmin(listaAdmin);
             registroAdministradorController.setListaEmpleado(listaEmpleado);
             registroAdministradorController.setCuentasLogeadas(cuentasLogeadas);
+            registroAdministradorController.setLstDepa(lstDepa);
             registroAdministradorController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -74,8 +70,10 @@ public class LoginAdministradorController {
             alerta.showAndWait();
         }else {
             int cuentasLogeadas = 0;
+            boolean usuarioValido = false;
             for (Empleado empleado: listaAdmin){
                 if (empleado.getNombreUser().equals(txtNombreUser.getText())&&empleado.getPassword().equals(txtPassword.getText())){
+                    usuarioValido = true;
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menu-view.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
@@ -84,6 +82,7 @@ public class LoginAdministradorController {
                         MenuController menuController = fxmlLoader.getController();
                         menuController.setListaAdmin(listaAdmin);
                         menuController.setListaEmpleado(listaEmpleado);
+                        menuController.setLstDepa(lstDepa);
                         menuController.setCuentasLogeadas(cuentasLogeadas);
                         menuController.initialize();
                         stage.setScene(scene);
@@ -95,16 +94,16 @@ public class LoginAdministradorController {
                     Node source = (Node) event.getSource();
                     stage = (Stage) source.getScene().getWindow();stage.close();
 
-                }else{
-                    Alert alerta = new Alert(Alert.AlertType.ERROR);
-                    alerta.setTitle("Error");
-                    alerta.setHeaderText("Error al inicar sesion");
-                    alerta.setContentText("Contraseña o usuario incorrecto");
-                    alerta.showAndWait();
                 }
                 cuentasLogeadas++;
             }
-
+            if (!usuarioValido) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Error al inicar sesion");
+                alerta.setContentText("Contraseña o usuario incorrecto");
+                alerta.showAndWait();
+            }
         }
 
 
@@ -113,6 +112,18 @@ public class LoginAdministradorController {
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
-
+        this.lstDepa = lstDepa;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
     }
 }

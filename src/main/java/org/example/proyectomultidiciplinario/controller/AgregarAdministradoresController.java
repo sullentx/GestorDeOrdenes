@@ -1,12 +1,13 @@
 package org.example.proyectomultidiciplinario.controller;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -17,11 +18,11 @@ import org.example.proyectomultidiciplinario.models.Ingeniero;
 import org.example.proyectomultidiciplinario.models.Tecnico;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class RegistroEmpleadoController {
+public class AgregarAdministradoresController {
+
+
     private ArrayList<Empleado> listaEmpleado;
     private ArrayList<Empleado> listaAdmin;
 
@@ -53,8 +54,8 @@ public class RegistroEmpleadoController {
     private Label lbTipoEmpleado;
     private Stage stage = new Stage();
     private int cuentasLogeadas;
-
     private ArrayList<Departamento>lstDepa;
+
 
 
     @FXML
@@ -72,7 +73,7 @@ public class RegistroEmpleadoController {
             } else {
                 boolean existe = false;
                 String nombreUsuario = txtNombreUsuario.getText();
-                for (Empleado empleado : listaEmpleado) {
+                for (Empleado empleado : listaAdmin) {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
@@ -94,18 +95,18 @@ public class RegistroEmpleadoController {
                     ingeniero.setNombreUser(txtNombreUsuario.getText());
                     ingeniero.setPassword(txtPassword.getText());
                     txtNombreUsuario.clear();
-                    listaEmpleado.add(ingeniero);
-                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginEmpleado.fxml"));
+                    listaAdmin.add(ingeniero);
+                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleados-view.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
                         Scene scene = new Scene(root);
-                        stage.setTitle("Iniciar sesion");
-                        LoginEmpleadoController loginEmpleadoController = fxmlLoader.getController();
-                        loginEmpleadoController.setListaEmpleado(listaEmpleado);
-                        loginEmpleadoController.setListaAdmin(listaAdmin);
-                        loginEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
-                        loginEmpleadoController.setLstDepa(lstDepa);
-                        loginEmpleadoController.initialize();
+                        stage.setTitle("ESAB");
+                        ListaEmpleadosController listaEmpleadosController = fxmlLoader.getController();
+                        listaEmpleadosController.setListaEmpleado(listaEmpleado);
+                        listaEmpleadosController.setListaAdmin(listaAdmin);
+                        listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosController.setLstDepa(lstDepa);
+                        listaEmpleadosController.initialize();
                         stage.setScene(scene);
                         stage.show();
                         stage.setResizable(false);
@@ -131,7 +132,7 @@ public class RegistroEmpleadoController {
             }else {
                 boolean existe = false;
                 String nombreUsuario = txtNombreUsuario.getText();
-                for (Empleado empleado : listaEmpleado) {
+                for (Empleado empleado : listaAdmin) {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
@@ -153,18 +154,18 @@ public class RegistroEmpleadoController {
                     tecnico.setNombreUser(txtNombreUsuario.getText());
                     tecnico.setPassword(txtPassword.getText());
                     txtNombreUsuario.clear();
-                    listaEmpleado.add(tecnico);
-                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginEmpleado.fxml"));
+                    listaAdmin.add(tecnico);
+                    FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleados-view.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
                         Scene scene = new Scene(root);
-                        stage.setTitle("Iniciar sesion");
-                        LoginEmpleadoController loginEmpleadoController = fxmlLoader.getController();
-                        loginEmpleadoController.setListaEmpleado(listaEmpleado);
-                        loginEmpleadoController.setListaAdmin(listaAdmin);
-                        loginEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
-                        loginEmpleadoController.setLstDepa(lstDepa);
-                        loginEmpleadoController.initialize();
+                        stage.setTitle("ESAB");
+                        ListaEmpleadosController listaEmpleadosController = fxmlLoader.getController();
+                        listaEmpleadosController.setListaEmpleado(listaEmpleado);
+                        listaEmpleadosController.setListaAdmin(listaAdmin);
+                        listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosController.setLstDepa(lstDepa);
+                        listaEmpleadosController.initialize();
                         stage.setScene(scene);
                         stage.show();
                         stage.setResizable(false);
@@ -180,30 +181,6 @@ public class RegistroEmpleadoController {
         }
     }
 
-    public void btnIrMenu(MouseEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menuInicial.fxml"));
-        Stage stage;
-        try {
-            Pane root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage = new Stage();
-            stage.setTitle("Registro de Empleados");
-            MenuIncialController menuIncialController = fxmlLoader.getController();
-            menuIncialController.setListaEmpleado(listaEmpleado);
-            menuIncialController.setListaAdmin(listaAdmin);
-            menuIncialController.setCuentasLogeadas(cuentasLogeadas);
-            menuIncialController.setLstDepa(lstDepa);
-            menuIncialController.initialize();
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
     @FXML
     void cbIngeniero(MouseEvent event) {
         if (!cbIngeniero.isSelected()){
@@ -236,10 +213,10 @@ public class RegistroEmpleadoController {
         this.listaEmpleado = listaEmpleado;
         this.lstDepa = lstDepa;
     }
-
     public void setLstDepa(ArrayList<Departamento> lstDepa) {
         this.lstDepa = lstDepa;
     }
+
 
     public void setCuentasLogeadas(int cuentasLogeadas) {
         this.cuentasLogeadas = cuentasLogeadas;
@@ -253,4 +230,3 @@ public class RegistroEmpleadoController {
         this.listaAdmin = listaAdmin;
     }
 }
-

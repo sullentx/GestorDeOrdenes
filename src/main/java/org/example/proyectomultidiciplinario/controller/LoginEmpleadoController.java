@@ -1,6 +1,8 @@
 package org.example.proyectomultidiciplinario.controller;
 
 
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
 import java.io.IOException;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 public class LoginEmpleadoController {
     private ArrayList<Empleado>listaEmpleado;
     private ArrayList<Empleado>listaAdmin;
+
     @FXML
     private TextField txtNombreUser;
 
@@ -31,17 +35,9 @@ public class LoginEmpleadoController {
     private Stage stage = new Stage();
     private int cuentasLogeadas;
 
+    private ArrayList<Departamento>lstDepa;
 
 
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
 
     public void btnAgregarUsers(MouseEvent event) {
         Stage stage = new Stage();
@@ -54,8 +50,10 @@ public class LoginEmpleadoController {
             registroEmpleadoController.setListaEmpleado(listaEmpleado);
             registroEmpleadoController.setListaAdmin(listaAdmin);
             registroEmpleadoController.setCuentasLogeadas(cuentasLogeadas);
+            registroEmpleadoController.setLstDepa(lstDepa);
             registroEmpleadoController.initialize();
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -63,7 +61,6 @@ public class LoginEmpleadoController {
         Node source = (Node) event.getSource();
         stage = (Stage) source.getScene().getWindow();stage.close();
     }
-
 
     public void btnIniciarSesion(MouseEvent event){
         if (listaEmpleado.isEmpty()||txtNombreUser.getText().isEmpty()||txtPassword.getText().isEmpty()){
@@ -73,8 +70,10 @@ public class LoginEmpleadoController {
             alerta.showAndWait();
         }else {
             int cuentasLogeadas = 0;
+            boolean usuarioValido= false;
             for (Empleado empleado: listaEmpleado){
                 if (empleado.getNombreUser().equals(txtNombreUser.getText())&&empleado.getPassword().equals(txtPassword.getText())){
+                    usuarioValido = true;
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menu-view.fxml"));
                     try {
                         Pane root = fxmlLoader.load();
@@ -83,35 +82,49 @@ public class LoginEmpleadoController {
                         MenuController menuController = fxmlLoader.getController();
                         menuController.setListaEmpleado(listaEmpleado);
                         menuController.setListaAdmin(listaAdmin);
+                        menuController.setLstDepa(lstDepa);
                         menuController.initialize();
                         menuController.setCuentasLogeadas(cuentasLogeadas);
+                        menuController.initialize();
                         menuController.ocultarForEmpleado();
                         stage.setScene(scene);
+                        stage.setResizable(false);
                         stage.show();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                     Node source = (Node) event.getSource();
                     stage = (Stage) source.getScene().getWindow();stage.close();
-
-                }else {
-                    alerta.setTitle("Error");
-                    alerta.setHeaderText("Error al inicar sesion");
-                    alerta.setContentText("Contraseña o usuario incorrecto");
-                    alerta.showAndWait();
                 }
                 cuentasLogeadas++;
             }
-
+            if (!usuarioValido) {
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Error al inicar sesion");
+                alerta.setContentText("Contraseña o usuario incorrecto");
+                alerta.showAndWait();
+            }
         }
 
     }
 
 
-
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
-
+        this.lstDepa = lstDepa;
     }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+
 }

@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
 import java.io.IOException;
@@ -19,26 +20,17 @@ import java.util.ArrayList;
 
 public class ListaEmpleadosComunesController  {
 
+    public Button btnEliminar;
+    public Button btnLimpiar;
     @FXML
     private Button btnGuardar;
 
-    @FXML
-    private Button btnEliminar;
-
-    @FXML
-    private Button btnLimpiar;
-
-    @FXML
-    private Button btnModificar;
 
     @FXML
     private TextField txtApeMaterno;
 
     @FXML
     private TextField txtApePaterno;
-
-    @FXML
-    private Label txtApellidoPaterno;
 
     @FXML
     private TextField txtNameUser;
@@ -56,22 +48,8 @@ public class ListaEmpleadosComunesController  {
 
     private int cuentasLogeadas;
 
-    public void setBtnGuardar(Button btnGuardar) {
-        this.btnGuardar = btnGuardar;
-    }
+    private ArrayList<Departamento>lstDepa;
 
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
-
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
-
-
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
 
     @FXML
     void btnLimpiar(MouseEvent event) {
@@ -120,11 +98,7 @@ public class ListaEmpleadosComunesController  {
 
     @FXML
     void btnMostrarLista(MouseEvent event){
-        ObservableList<String> items = FXCollections.observableArrayList();
-        for (Empleado empleado : listaEmpleado) {
-            items.add(empleado.toString());
-        }
-        ltsEmpleados.setItems(items);
+        actualizarLista();
     }
 
     @FXML
@@ -161,6 +135,7 @@ public class ListaEmpleadosComunesController  {
             menuController.setListaEmpleado(listaEmpleado);
             menuController.setListaAdmin(listaAdmin);
             menuController.setCuentasLogeadas(cuentasLogeadas);
+            menuController.setLstDepa(lstDepa);
             menuController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -186,12 +161,55 @@ public class ListaEmpleadosComunesController  {
     }
 
 
+    public void ltsEmpleados(MouseEvent event) {
+            actualizarLista();
+    }
+
+    public void btnAgregar(MouseEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("agregarEmpleados.fxml"));
+        Stage stage = new Stage();
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Registro de Empleados");
+            AgregarEmpleadosController agregarEmpleadosController = fxmlLoader.getController();
+            agregarEmpleadosController.setListaEmpleado(listaEmpleado);
+            agregarEmpleadosController.setListaAdmin(listaAdmin);
+            agregarEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+            agregarEmpleadosController.setListaEmpleado(listaEmpleado);
+            agregarEmpleadosController.setLstDepa(lstDepa);
+            agregarEmpleadosController.initialize();
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
-
+        this.lstDepa = lstDepa;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
     }
 
-    public void ltsEmpleados(MouseEvent event) {
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
     }
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
+
+
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+
 }
