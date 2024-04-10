@@ -90,6 +90,7 @@ public class RegistroAdministradorController  {
                     ingeniero.setTituloIngeniero(txtTipoEmpleado.getText());
                     ingeniero.setNombreUser(txtNombreUsuario.getText());
                     ingeniero.setPassword(txtPassword.getText());
+                    ingeniero.setRol("Administrador");
                     txtNombreUsuario.clear();
                     listaAdmin.add(ingeniero);
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginAdministrador.fxml"));
@@ -150,6 +151,7 @@ public class RegistroAdministradorController  {
                     tecnico.setCedulaTecnica(txtTipoEmpleado.getText());
                     tecnico.setNombreUser(txtNombreUsuario.getText());
                     tecnico.setPassword(txtPassword.getText());
+                    tecnico.setRol("Administrador");
                     txtNombreUsuario.clear();
                     listaAdmin.add(tecnico);
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginAdministrador.fxml"));

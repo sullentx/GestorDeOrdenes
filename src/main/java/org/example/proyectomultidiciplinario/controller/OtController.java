@@ -66,10 +66,8 @@ public class OtController implements Initializable {
     private ArrayList<Empleado>listaEmpleado;
     private ArrayList<Empleado>listaAdmin;
     private int cuentasLogeadas;
+    private ArrayList<Departamento>lstDepa;
 
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
     public ObservableList<OrdenDeTrabajo> obtenerOrdenesTrabajo() {
         GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
         return FXCollections.observableArrayList(gestorOrdenes.getLstOT());
@@ -89,15 +87,27 @@ public class OtController implements Initializable {
             nuevaOT.setFolio(folio);
             txtFecha.getText();
 
+            if (cmbxTurno.getSelectionModel().isEmpty()||txtEquipR.getText().isEmpty()||txtUbiEquipo.getText().isEmpty()||
+                    txtFallaE.getText().isEmpty()||
+                    txtFallaR.getText().isEmpty()||cmbxEstatus.getSelectionModel().isEmpty()){
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Campos vacios");
+                alerta.setContentText("Favor de rellenar los campos");
+                alerta.showAndWait();
+            } else {
             String turnoSeleccionado = cmbxTurno.getValue();
             nuevaOT.setTurno(turnoSeleccionado);
             nuevaOT.setEquipoReportado(txtEquipR.getText());
             nuevaOT.setUbicacionEquipo(txtUbiEquipo.getText());
             nuevaOT.setFallaEncontrada(txtFallaE.getText());
             nuevaOT.setFallaReportada(txtFallaR.getText());
-            cmbxOp.getSelectionModel().getSelectedItem();
-            cmbxDepartamento.getSelectionModel().getSelectedItem();
-            cmbxEM.getSelectionModel().getSelectedItem();
+            String operadorSeleccionado = cmbxOp.getValue();
+            nuevaOT.setOperador(operadorSeleccionado);
+            String departamentoSeleccionado = cmbxDepartamento.getValue();
+            nuevaOT.setDepartamento(departamentoSeleccionado);
+            String encargadoMantenimientoSeleccionado = cmbxEM.getValue();
+            nuevaOT.setEM(encargadoMantenimientoSeleccionado);
             txtHoraInicio.getText();
             txtHoraFin.getText();
             String estatusSeleccionado = cmbxEstatus.getValue();
@@ -112,6 +122,7 @@ public class OtController implements Initializable {
             }
 
             ot.agregarFolioGuardado(folio);
+            }
         } else {
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Lista Repetida");
@@ -157,12 +168,6 @@ public class OtController implements Initializable {
         cmbxEstatus.setValue(null);
 
 
-       // String operadorSeleccionado = cmbxOp.getValue();
-        //nuevaOT.setOperador(operadorSeleccionado);
-
-       // String encargadoMantenimientoSeleccionado = cmbxOp.getValue();
-        //nuevaOT.setEM(encargadoMantenimientoSeleccionado);
-
 
         String estatusSeleccionado = cmbxEstatus.getValue();
         nuevaOT.setEstatus(estatusSeleccionado);
@@ -186,20 +191,20 @@ public class OtController implements Initializable {
             stage.show();
 
             MenuController menuController = fxmlLoader.getController();
+
             menuController.setListaAdmin(listaAdmin);
             menuController.setListaEmpleado(listaEmpleado);
             menuController.setCuentasLogeadas(cuentasLogeadas);
+            menuController.setLstDepa(lstDepa);
             menuController.initialize();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        stage = (Stage) source.getScene().getWindow();stage.close();
 
 
     }
-
 
 
     @Override
@@ -247,6 +252,28 @@ public class OtController implements Initializable {
             System.err.println("Error: listaEmpleado es nula");
         }
     }
+    private void inicializarComboBoxAdministradores() {
+        cmbxEM.getItems().clear();
+
+        if (listaAdmin != null) {
+            for (Empleado admin : listaAdmin) {
+                cmbxEM.getItems().add(admin.getNombre());
+            }
+        } else {
+            System.err.println("Error: listaAdmin es nula");
+        }
+    }
+    private void inicializarComboBoxDepartamentos() {
+        cmbxDepartamento.getItems().clear();
+
+        if (lstDepa != null) {
+            for (Departamento departamento : lstDepa) {
+                cmbxDepartamento.getItems().add(departamento.getNombreDepartamento());
+            }
+        } else {
+            System.err.println("Error: lstDepa es nula");
+        }
+    }
     private void generarNuevoFolio() {
         OrdenDeTrabajo nuevaOT = new OrdenDeTrabajo();
 
@@ -271,6 +298,7 @@ public class OtController implements Initializable {
 
     public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
         this.listaAdmin = listaAdmin;
+        inicializarComboBoxAdministradores();
     }
 
     public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
@@ -278,9 +306,17 @@ public class OtController implements Initializable {
         inicializarComboBoxEmpleados();
     }
 
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+        inicializarComboBoxDepartamentos();
+    }
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
         this.cuentasLogeadas = cuentasLogeadas;
+        this.lstDepa = lstDepa;
     }
 }

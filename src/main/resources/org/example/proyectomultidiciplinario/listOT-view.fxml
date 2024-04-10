@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -20,12 +21,19 @@
             <TableColumn fx:id="colUbiEquipo" prefWidth="148.0" text="Ubicacion del Equipo" />
             <TableColumn fx:id="colFallaReportada" minWidth="8.79998779296875" prefWidth="139.20001220703125" text="Falla Reportada" />
             <TableColumn fx:id="colFallaEncontrada" prefWidth="150.39996337890625" text="Falla Encontrada" />
-            <TableColumn fx:id="colOperadores" minWidth="0.0" prefWidth="171.199951171875" text="Operadores" />
-            <TableColumn fx:id="colEncargadoMant" prefWidth="175.9998779296875" text="Encargado de Mantenimiento" />
-            <TableColumn fx:id="colEstatus" prefWidth="124.8001708984375" text="Estatus" />
+            <TableColumn fx:id="colOperadores" minWidth="0.0" prefWidth="124.79998779296875" text="Operador" />
+            <TableColumn fx:id="colEncargadoMant" prefWidth="178.39996337890625" text="Encargado de Mantenimiento" />
+            <TableColumn fx:id="colDepartamento" prefWidth="88.8001708984375" text="Departamento" />
+            <TableColumn fx:id="colEstatus" prefWidth="72.800048828125" text="Estatus" />
         </columns>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </TableView>
-      <Button fx:id="btnActualizar" layoutX="334.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#btnActualizar" style="-fx-background-color: ffffff;" text="Actualizar Tabla" />
+      <Button fx:id="btnActualizar" layoutX="334.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#btnActualizar" style="-fx-background-color: ffffff;" text="Actualizar Tabla">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <AnchorPane prefHeight="112.0" prefWidth="1280.0" style="-fx-background-color: rgb(247, 229, 76);">
          <children>
             <ImageView fitHeight="92.0" fitWidth="90.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
@@ -40,8 +48,17 @@
             </Label>
          </children>
       </AnchorPane>
-      <ComboBox fx:id="cmbxModEstatus" layoutX="727.0" layoutY="537.0" prefWidth="150.0" />
-      <Button fx:id="btnModEstatus" layoutX="532.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnModEstatus" text="Modificar Estatus" />
-      <Button fx:id="btnRegresarMenu" layoutX="531.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#btnRegresarMenu" style="-fx-background-color: black;" text="Regresar al Menu" textFill="WHITE" />
+      <ComboBox fx:id="cmbxModEstatus" layoutX="727.0" layoutY="537.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
+      <Button fx:id="btnModEstatus" layoutX="532.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnModEstatus" text="Modificar Estatus">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnRegresarMenu" layoutX="531.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#btnRegresarMenu" style="-fx-background-color: black;" text="Regresar al Menu" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

@@ -3,8 +3,8 @@ package org.example.proyectomultidiciplinario.models;
 public class Tecnico extends Empleado {
     private String cedulaTecnica;
 
-    public Tecnico(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password, String cedulaTecnica) {
-        super(nombre, apellidoPaterno, apellidoMaterno, edad, password);
+    public Tecnico(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password,String rol,  String cedulaTecnica) {
+        super(nombre, apellidoPaterno, apellidoMaterno, edad, password,rol);
         this.cedulaTecnica = cedulaTecnica;
     }
 

@@ -7,21 +7,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
+import org.example.proyectomultidiciplinario.models.Empleado;
 import org.example.proyectomultidiciplinario.models.GestorOrdenes;
 import org.example.proyectomultidiciplinario.models.OrdenDeTrabajo;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -33,6 +33,12 @@ public class listOTController implements Initializable {
 
     @FXML
     private TableColumn<OrdenDeTrabajo, String> colEncargadoMant;
+
+    @FXML
+    private TableColumn<OrdenDeTrabajo, String> colDepartamento;
+
+    @FXML
+    private TableColumn<OrdenDeTrabajo, String> colOperadores;
 
     @FXML
     private TableColumn<OrdenDeTrabajo, String> colEquipoRepotrtado;
@@ -49,8 +55,6 @@ public class listOTController implements Initializable {
     @FXML
     private TableColumn<OrdenDeTrabajo, String> colFolio;
 
-    @FXML
-    private TableColumn<OrdenDeTrabajo, String> colOperadores;
 
     @FXML
     private TableColumn<OrdenDeTrabajo, String> colTurno;
@@ -60,6 +64,14 @@ public class listOTController implements Initializable {
 
     @FXML
     private TableView<OrdenDeTrabajo> tblOT;
+    private ArrayList<Empleado> listaAdmin;
+    private ArrayList<Empleado>listaEmpleado;
+
+    private ListView<String> ltsEmpleados;
+
+    private int cuentasLogeadas;
+
+    private ArrayList<Departamento>lstDepa;
     private GestorOrdenes gestorOrdenes;
 
     @Override
@@ -80,6 +92,27 @@ public class listOTController implements Initializable {
         colUbiEquipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUbicacionEquipo()));
         colFallaEncontrada.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFallaEncontrada()));
         colFallaReportada.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFallaReportada()));
+        colOperadores.setCellValueFactory(cellData -> {
+            StringProperty value = new SimpleStringProperty();
+            if (cellData.getValue() != null && cellData.getValue().getOperador() != null) {
+                value.setValue(cellData.getValue().getOperador());
+            }
+            return value;
+        });
+        colDepartamento.setCellValueFactory(cellData -> {
+            StringProperty value = new SimpleStringProperty();
+            if (cellData.getValue() != null && cellData.getValue().getDepartamento() != null) {
+                value.setValue(cellData.getValue().getDepartamento());
+            }
+            return value;
+        });
+        colEncargadoMant.setCellValueFactory(cellData -> {
+            StringProperty value = new SimpleStringProperty();
+            if (cellData.getValue() != null && cellData.getValue().getEncargadoMantenimiento() != null) {
+                value.setValue(cellData.getValue().getEncargadoMantenimiento());
+            }
+            return value;
+        });
         colTurno.setCellValueFactory(cellData -> {
             StringProperty value = new SimpleStringProperty();
             if (cellData.getValue() != null && cellData.getValue().getTurno() != null) {
@@ -103,22 +136,34 @@ public class listOTController implements Initializable {
         tblOT.setItems(ordenesTrabajo);
     }
 
-    public void setLstOT(GestorOrdenes gestorOrdenes) {
-        this.gestorOrdenes = gestorOrdenes;
-    }
 
     public void initialize() {
+        this.listaAdmin = listaAdmin;
+        this.listaEmpleado = listaEmpleado;
+        this.cuentasLogeadas = cuentasLogeadas;
+        this.lstDepa = lstDepa;
     }
 
     public void btnModEstatus(javafx.event.ActionEvent event) {
         OrdenDeTrabajo ordenSeleccionada = tblOT.getSelectionModel().getSelectedItem();
         if (ordenSeleccionada == null) {
             System.out.println("Por favor seleccione una fila.");
+
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Fila sin seleccionar");
+            alerta.setHeaderText("Nesesita seleccionar una fila");
+            alerta.showAndWait();
+
             return;
         }
         String nuevoEstatus = cmbxModEstatus.getValue();
         if (nuevoEstatus == null) {
             System.out.println("Por favor seleccione un estatus.");
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Estatus sin seleccionar");
+            alerta.setHeaderText("Nesesita seleccionar una estatus");
+            alerta.showAndWait();
+
             return;
         }
 
@@ -139,18 +184,45 @@ public class listOTController implements Initializable {
             stage.show();
 
             MenuController menuController = fxmlLoader.getController();
-            GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
 
+            menuController.setListaAdmin(listaAdmin);
+            menuController.setListaEmpleado(listaEmpleado);
+            menuController.setCuentasLogeadas(cuentasLogeadas);
+            menuController.setLstDepa(lstDepa);
+            GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
             menuController.setLstOT(gestorOrdenes);
             menuController.initialize();
         } catch (IOException e) {
             throw new RuntimeException(e);
+
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        stage = (Stage) source.getScene().getWindow();stage.close();
+    }
+    public void setLstOT(GestorOrdenes gestorOrdenes) {
+        this.gestorOrdenes = gestorOrdenes;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
+
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
+
+    public void setLtsEmpleados(ListView<String> ltsEmpleados) {
+        this.ltsEmpleados = ltsEmpleados;
+    }
+
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
     }
 }
+
 
 
 

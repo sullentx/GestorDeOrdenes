@@ -12,6 +12,10 @@ public class OrdenDeTrabajo {
     private String fallaReportada;
     private int folioContador = 0;
     private String folio;
+    private String operador;
+    private String departamento;
+    private String encargadoMantenimiento;
+
 
 
 
@@ -50,6 +54,7 @@ public class OrdenDeTrabajo {
         this.turno.add(turnoSeleccionado);
     }
 
+
     public void setEstatus(String estatus) {
         this.estatus.add(estatus);
     }
@@ -73,9 +78,20 @@ public class OrdenDeTrabajo {
     public String getFallaReportada() {
         return fallaReportada;
     }
+    public String getFolio() {
+        return folio;
+    }
 
-    public int getFolioContador() {
-        return folioContador;
+    public String getOperador() {
+        return operador;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public String getEncargadoMantenimiento() {
+        return encargadoMantenimiento;
     }
 
     public OrdenDeTrabajo(String equipoReportado, String ubicacionEquipo, String fallaEncontrada, String fallaReportada) {
@@ -115,17 +131,22 @@ public class OrdenDeTrabajo {
 
     @Override
     public String toString() {
-        return "folio='" + folio + '\'' +
-                "equipoReportado='" + equipoReportado + '\'' +
-                ", ubicacionEquipo='" + ubicacionEquipo + '\'' +
-                ", fallaEncontrada='" + fallaEncontrada + '\'' +
-                ", fallaReportada='" + fallaReportada + '\'' +
-                ", turno=" + turno +
-                ", estatus="+ estatus;
+        return "folio='" + folio + "', equipoReportado='" + equipoReportado + "', ubicacionEquipo='" + ubicacionEquipo +
+                "', fallaEncontrada='" + fallaEncontrada + "', fallaReportada='" + fallaReportada +
+                "', operador='" + operador + "', departamento='" + departamento + "', encargadoMantenimiento='" + encargadoMantenimiento +
+                "', turno=" + turno + ", estatus=" + estatus;
     }
 
-    public String getFolio() {
-        return folio;
+
+    public void setOperador(String operador) {
+        this.operador = operador;
     }
 
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public void setEM(String encargadoMantenimiento) {
+        this.encargadoMantenimiento = encargadoMantenimiento;
+    }
 }

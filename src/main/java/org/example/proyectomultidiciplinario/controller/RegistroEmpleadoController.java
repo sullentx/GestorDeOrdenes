@@ -93,6 +93,7 @@ public class RegistroEmpleadoController {
                     ingeniero.setTituloIngeniero(txtTipoEmpleado.getText());
                     ingeniero.setNombreUser(txtNombreUsuario.getText());
                     ingeniero.setPassword(txtPassword.getText());
+                    ingeniero.setRol("Empleador");
                     txtNombreUsuario.clear();
                     listaEmpleado.add(ingeniero);
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginEmpleado.fxml"));
@@ -152,6 +153,7 @@ public class RegistroEmpleadoController {
                     tecnico.setCedulaTecnica(txtTipoEmpleado.getText());
                     tecnico.setNombreUser(txtNombreUsuario.getText());
                     tecnico.setPassword(txtPassword.getText());
+                    tecnico.setRol("Empleado");
                     txtNombreUsuario.clear();
                     listaEmpleado.add(tecnico);
                     FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("loginEmpleado.fxml"));
