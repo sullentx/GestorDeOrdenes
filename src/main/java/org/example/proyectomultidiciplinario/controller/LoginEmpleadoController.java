@@ -1,6 +1,7 @@
 package org.example.proyectomultidiciplinario.controller;
 
 
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ public class LoginEmpleadoController {
     private ArrayList<Departamento>lstDepa;
 
 
+
     public void btnAgregarUsers(MouseEvent event) {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("registroEmpleado.fxml"));
@@ -51,6 +53,7 @@ public class LoginEmpleadoController {
             registroEmpleadoController.setLstDepa(lstDepa);
             registroEmpleadoController.initialize();
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -82,8 +85,10 @@ public class LoginEmpleadoController {
                         menuController.setLstDepa(lstDepa);
                         menuController.initialize();
                         menuController.setCuentasLogeadas(cuentasLogeadas);
+                        menuController.initialize();
                         menuController.ocultarForEmpleado();
                         stage.setScene(scene);
+                        stage.setResizable(false);
                         stage.show();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -102,7 +107,6 @@ public class LoginEmpleadoController {
         }
 
     }
-
 
 
     public void initialize() {
