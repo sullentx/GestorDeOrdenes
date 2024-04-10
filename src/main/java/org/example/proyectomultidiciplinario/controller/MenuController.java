@@ -1,5 +1,6 @@
 package org.example.proyectomultidiciplinario.controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
 import java.io.IOException;
@@ -33,12 +35,13 @@ public class MenuController {
     private AnchorPane anchGraficaDatos;
     private ArrayList<Empleado> listaAdmin;
     private ArrayList<Empleado>listaEmpleado;
+
     private int cuentasLogeadas;
+    private ArrayList<Departamento>lstDepa;
 
 
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
+
+
 
 
 
@@ -67,6 +70,7 @@ public class MenuController {
             menuIncialController.setListaEmpleado(listaEmpleado);
             menuIncialController.setListaAdmin(listaAdmin);
             menuIncialController.setCuentasLogeadas(cuentasLogeadas);
+            menuIncialController.setLstDepa(lstDepa);
             menuIncialController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -97,8 +101,27 @@ public class MenuController {
 
     @FXML
     void btnListaDepartamento(MouseEvent event) {
-
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("agregarDepartamentos.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Registro de usuarios");
+            AgregarDepartamentosController agregarDepartamentosController =fxmlLoader.getController();
+            agregarDepartamentosController.setListaAdmin(listaAdmin);
+            agregarDepartamentosController.setListaEmpleado(listaEmpleado);
+            agregarDepartamentosController.setLstDepa(lstDepa);
+            agregarDepartamentosController.setCuentasLogeadas(cuentasLogeadas);
+            agregarDepartamentosController.initialize();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();stage.close();
     }
+
 
     @FXML
     void btnListaAdministradores(MouseEvent event) {
@@ -112,6 +135,7 @@ public class MenuController {
             listaEmpleadosController.setListaAdmin(listaAdmin);
             listaEmpleadosController.setListaEmpleado(listaEmpleado);
             listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+            listaEmpleadosController.setLstDepa(lstDepa);
             listaEmpleadosController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -126,17 +150,6 @@ public class MenuController {
     void btnVerListaOT(MouseEvent event) {
 
     }
-
-
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
-
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
-
-
     public void btnListaEmpleados(MouseEvent event) {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleadosComunes.fxml"));
@@ -148,6 +161,7 @@ public class MenuController {
             listaEmpleadosComunesController.setListaEmpleado(listaEmpleado);
             listaEmpleadosComunesController.setCuentasLogeadas(cuentasLogeadas);
             listaEmpleadosComunesController.setListaAdmin(listaAdmin);
+            listaEmpleadosComunesController.setLstDepa(lstDepa);
             listaEmpleadosComunesController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -161,7 +175,20 @@ public class MenuController {
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
-
+        this.lstDepa = lstDepa;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
     }
 
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
 }

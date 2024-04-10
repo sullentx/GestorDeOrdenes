@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 import org.example.proyectomultidiciplinario.models.Ingeniero;
 import org.example.proyectomultidiciplinario.models.Tecnico;
@@ -24,6 +25,7 @@ public class AgregarAdministradoresController {
 
     private ArrayList<Empleado> listaEmpleado;
     private ArrayList<Empleado> listaAdmin;
+
 
     @FXML
     private CheckBox cbIngeniero;
@@ -52,19 +54,9 @@ public class AgregarAdministradoresController {
     private Label lbTipoEmpleado;
     private Stage stage = new Stage();
     private int cuentasLogeadas;
+    private ArrayList<Departamento>lstDepa;
 
 
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
-
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
-
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
 
     @FXML
     void btnGuardar(MouseEvent event) {
@@ -113,6 +105,7 @@ public class AgregarAdministradoresController {
                         listaEmpleadosController.setListaEmpleado(listaEmpleado);
                         listaEmpleadosController.setListaAdmin(listaAdmin);
                         listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosController.setLstDepa(lstDepa);
                         listaEmpleadosController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -171,6 +164,7 @@ public class AgregarAdministradoresController {
                         listaEmpleadosController.setListaEmpleado(listaEmpleado);
                         listaEmpleadosController.setListaAdmin(listaAdmin);
                         listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosController.setLstDepa(lstDepa);
                         listaEmpleadosController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -217,6 +211,22 @@ public class AgregarAdministradoresController {
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
+        this.lstDepa = lstDepa;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
 
+
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
+
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
     }
 }

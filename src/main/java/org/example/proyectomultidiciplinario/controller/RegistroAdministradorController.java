@@ -1,5 +1,6 @@
 package org.example.proyectomultidiciplinario.controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 import org.example.proyectomultidiciplinario.models.Ingeniero;
 import org.example.proyectomultidiciplinario.models.Tecnico;
@@ -50,17 +52,7 @@ public class RegistroAdministradorController  {
     private TextField txtTipoEmpleado;
     private Stage stage = new Stage();
     private int cuentasLogeadas;
-
-    public void setCuentasLogeadas(int cuentasLogeadas) {
-        this.cuentasLogeadas = cuentasLogeadas;
-    }
-
-    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
-        this.listaAdmin = listaAdmin;
-    }
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
-        this.listaEmpleado = listaEmpleado;
-    }
+    private ArrayList<Departamento>lstDepa;
 
 
     public void btnGuardar(MouseEvent event) {
@@ -109,6 +101,7 @@ public class RegistroAdministradorController  {
                         loginAdministradorController.setListaAdmin(listaAdmin);
                         loginAdministradorController.setListaEmpleado(listaEmpleado);
                         loginAdministradorController.setCuentasLogeadas(cuentasLogeadas);
+                        loginAdministradorController.setLstDepa(lstDepa);
                         loginAdministradorController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -168,7 +161,7 @@ public class RegistroAdministradorController  {
                         loginAdministradorController.setListaAdmin(listaAdmin);
                         loginAdministradorController.setListaEmpleado(listaEmpleado);
                         loginAdministradorController.setCuentasLogeadas(cuentasLogeadas);
-
+                        loginAdministradorController.setLstDepa(lstDepa);
                         loginAdministradorController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -195,6 +188,7 @@ public class RegistroAdministradorController  {
             menuIncialController.setListaAdmin(listaAdmin);
             menuIncialController.setListaEmpleado(listaEmpleado);
             menuIncialController.setCuentasLogeadas(cuentasLogeadas);
+            menuIncialController.setLstDepa(lstDepa);
             menuIncialController.initialize();
             stage.setScene(scene);
             stage.show();
@@ -237,12 +231,25 @@ public class RegistroAdministradorController  {
         }else
             cbIngeniero.setDisable(false);
 
-
     }
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
+        this.lstDepa = lstDepa;
+    }
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
 
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
     }
 
 }

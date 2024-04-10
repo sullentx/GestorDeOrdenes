@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 import org.example.proyectomultidiciplinario.models.Ingeniero;
 import org.example.proyectomultidiciplinario.models.Tecnico;
@@ -53,10 +54,16 @@ public class AgregarEmpleadosController {
     private Stage stage = new Stage();
     private int cuentasLogeadas;
 
+    private ArrayList<Departamento>lstDepa;
 
+    public void setLstDepa(ArrayList<Departamento> lstDepa) {
+        this.lstDepa = lstDepa;
+    }
     public void setCuentasLogeadas(int cuentasLogeadas) {
         this.cuentasLogeadas = cuentasLogeadas;
     }
+
+
 
     public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
         this.listaEmpleado = listaEmpleado;
@@ -113,6 +120,7 @@ public class AgregarEmpleadosController {
                         listaEmpleadosComunesController.setListaEmpleado(listaEmpleado);
                         listaEmpleadosComunesController.setListaAdmin(listaAdmin);
                         listaEmpleadosComunesController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosComunesController.setLstDepa(lstDepa);
                         listaEmpleadosComunesController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -171,6 +179,7 @@ public class AgregarEmpleadosController {
                         listaEmpleadosComunesController.setListaEmpleado(listaEmpleado);
                         listaEmpleadosComunesController.setListaAdmin(listaAdmin);
                         listaEmpleadosComunesController.setCuentasLogeadas(cuentasLogeadas);
+                        listaEmpleadosComunesController.setLstDepa(lstDepa);
                         listaEmpleadosComunesController.initialize();
                         stage.setScene(scene);
                         stage.show();
@@ -186,7 +195,6 @@ public class AgregarEmpleadosController {
             }
         }
     }
-
     @FXML
     void cbIngeniero(MouseEvent event) {
         if (!cbIngeniero.isSelected()){
@@ -217,6 +225,6 @@ public class AgregarEmpleadosController {
     public void initialize() {
         this.listaAdmin = listaAdmin;
         this.listaEmpleado = listaEmpleado;
-
+        this.lstDepa = lstDepa;
     }
 }

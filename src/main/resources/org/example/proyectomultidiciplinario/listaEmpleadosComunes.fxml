@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(17, 32, 45);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.ListaEmpleadosComunesController">
+<AnchorPane prefHeight="504.0" prefWidth="900.0" style="-fx-background-color: rgb(17, 32, 45);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.ListaEmpleadosComunesController">
     <children>
         <AnchorPane prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: rgb(247, 229, 76);">
             <children>
@@ -62,9 +62,9 @@
                 </TextField>
             </children>
         </VBox>
-        <Button fx:id="btnEliminar" layoutX="69.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnEliminar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-radius: 44px; -fx-background-color: ffffff;" text="Eliminar" />
-        <Button fx:id="btnLimpiar" layoutX="358.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnLimpiar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Limpiar" />
-        <Button fx:id="btnModificar" layoutX="216.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnModificar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Modificar" />
+        <Button fx:id="btnEliminar" layoutX="40.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnEliminar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-radius: 44px; -fx-background-color: ffffff;" text="Eliminar" />
+        <Button fx:id="btnLimpiar" layoutX="320.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnLimpiar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Limpiar" />
+        <Button fx:id="btnModificar" layoutX="184.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnModificar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Modificar" />
         <Button fx:id="btnMostrarLista" layoutX="171.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#btnMostrarLista" prefHeight="25.0" prefWidth="208.0" style="-fx-background-color: black;" text="Mostrar Lista Administradores" textFill="WHITE" />
         <Label layoutX="627.0" layoutY="216.0" prefHeight="17.0" prefWidth="105.0" text="Nombre" textFill="WHITE" />
         <Label fx:id="txtApellidoPaterno" layoutX="587.0" layoutY="251.0" prefHeight="17.0" prefWidth="105.0" text="Apellido Paterno" textFill="WHITE" />
@@ -72,6 +72,6 @@
         <Label layoutX="574.0" layoutY="323.0" prefHeight="17.0" prefWidth="105.0" text="Nombre de usuario" textFill="WHITE" />
         <Label layoutX="614.0" layoutY="357.0" prefHeight="17.0" prefWidth="105.0" text="Contraseña" textFill="WHITE" />
         <Button fx:id="btnGuardar" layoutX="723.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#btnGuardar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Guardar" />
-      <Button fx:id="btnAgregar" layoutX="525.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnAgregar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Agregar" />
+      <Button fx:id="btnAgregar" layoutX="450.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#btnAgregar" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Agregar" />
     </children>
 </AnchorPane>
