@@ -21,6 +21,7 @@ public class GestorOrdenesApplication extends Application {
     private MenuController menuController = new MenuController();
     private ListaEmpleadosController listaEmpleadosController = new ListaEmpleadosController();
     private ListaEmpleadosComunesController listaEmpleadosComunesController = new ListaEmpleadosComunesController();
+    private OtController otController = new OtController();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,6 +39,7 @@ public class GestorOrdenesApplication extends Application {
         registroAdministradorController.initialize();
         registroEmpleadoController.initialize();
         menuController.initialize();
+        otController.initialize();
         stage.setResizable(false);
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,31 +10,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="931.0" style="-fx-background-color: #ECE4D7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.listOTController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: rgb(17, 32, 45);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyectomultidiciplinario.controller.listOTController">
    <children>
-      <ImageView fitHeight="132.0" fitWidth="134.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../imagenes/ESAB_LOGO.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="294.0" layoutY="14.0" prefHeight="92.0" prefWidth="343.0" text="Ordenes de Trabajo">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tblOT" layoutY="101.0" prefHeight="354.0" prefWidth="931.0">
+      <TableView fx:id="tblOT" layoutX="20.0" layoutY="134.0" prefHeight="354.0" prefWidth="1240.0">
         <columns>
-          <TableColumn fx:id="colFolio" prefWidth="75.0" text="Folio" />
-          <TableColumn fx:id="colTurno" prefWidth="75.0" text="Turno" />
-            <TableColumn fx:id="colEquipoRepotrtado" prefWidth="138.4000244140625" text="Equipo que se Reporto" />
-            <TableColumn fx:id="colUbiEquipo" prefWidth="126.4000244140625" text="Ubicacion del Equipo" />
-            <TableColumn fx:id="colFallaReportada" minWidth="8.79998779296875" prefWidth="95.19998168945312" text="Falla Reportada" />
-            <TableColumn fx:id="colFallaEncontrada" prefWidth="98.39996337890625" text="Falla Encontrada" />
-            <TableColumn fx:id="colOperadores" prefWidth="72.0" text="Operadores" />
-            <TableColumn fx:id="colEncargadoMant" prefWidth="173.5999755859375" text="Encargado de Mantenimiento" />
-            <TableColumn fx:id="colEstatus" prefWidth="75.2000732421875" text="Estatus" />
+          <TableColumn fx:id="colFolio" prefWidth="85.60000610351562" text="Folio" />
+          <TableColumn fx:id="colTurno" prefWidth="75.20001220703125" text="Turno" />
+            <TableColumn fx:id="colEquipoRepotrtado" prefWidth="173.60003662109375" text="Equipo que se Reporto" />
+            <TableColumn fx:id="colUbiEquipo" prefWidth="148.0" text="Ubicacion del Equipo" />
+            <TableColumn fx:id="colFallaReportada" minWidth="8.79998779296875" prefWidth="139.20001220703125" text="Falla Reportada" />
+            <TableColumn fx:id="colFallaEncontrada" prefWidth="150.39996337890625" text="Falla Encontrada" />
+            <TableColumn fx:id="colOperadores" minWidth="0.0" prefWidth="171.199951171875" text="Operadores" />
+            <TableColumn fx:id="colEncargadoMant" prefWidth="175.9998779296875" text="Encargado de Mantenimiento" />
+            <TableColumn fx:id="colEstatus" prefWidth="124.8001708984375" text="Estatus" />
         </columns>
       </TableView>
-      <Button fx:id="btnActualizar" layoutX="350.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#btnActualizar" text="Actualizar Tabla" />
+      <Button fx:id="btnActualizar" layoutX="334.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#btnActualizar" style="-fx-background-color: ffffff;" text="Actualizar Tabla" />
+      <AnchorPane prefHeight="112.0" prefWidth="1280.0" style="-fx-background-color: rgb(247, 229, 76);">
+         <children>
+            <ImageView fitHeight="92.0" fitWidth="90.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/EsabLogo-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="468.0" layoutY="10.0" prefHeight="92.0" prefWidth="343.0" text="Ordenes de Trabajo">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ComboBox fx:id="cmbxModEstatus" layoutX="727.0" layoutY="537.0" prefWidth="150.0" />
+      <Button fx:id="btnModEstatus" layoutX="532.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnModEstatus" text="Modificar Estatus" />
+      <Button fx:id="btnRegresarMenu" layoutX="531.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#btnRegresarMenu" style="-fx-background-color: black;" text="Regresar al Menu" textFill="WHITE" />
    </children>
 </AnchorPane>

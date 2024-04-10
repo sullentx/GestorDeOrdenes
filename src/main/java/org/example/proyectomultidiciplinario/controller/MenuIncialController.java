@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
 import org.example.proyectomultidiciplinario.models.Empleado;
+import org.example.proyectomultidiciplinario.models.OrdenDeTrabajo;
 
 import java.io.IOException;
 
@@ -24,8 +24,10 @@ import java.util.ArrayList;
 public class MenuIncialController  {
 
     private int cuentasLogeadas;
+    private ArrayList<OrdenDeTrabajo> lstOT ;
     private ArrayList<Empleado>listaEmpleado = new ArrayList<>();
     private ArrayList<Empleado>listaAdmin = new ArrayList<>();
+    private String folio;
 
     @FXML
     void bntIREmpleado(MouseEvent event) {
