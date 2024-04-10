@@ -30,8 +30,6 @@ public class MenuController {
     @FXML
     private AnchorPane achListaEmpleado1;
 
-    @FXML
-    private Label lbMostrarUser;
 
     @FXML
     private AnchorPane anchGraficaDatos;
@@ -44,10 +42,6 @@ public class MenuController {
 
 
 
-
-
-
-    //Logea Empleado, desabilitar Anchor pane de grafica de datos y lista de empleados
     public void ocultarForEmpleado(){
         anchDeparamento.setDisable(true);
         achListaEmpleado.setDisable(true);
@@ -139,7 +133,7 @@ public class MenuController {
             listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
             listaEmpleadosController.setLstDepa(lstDepa);
             listaEmpleadosController.initialize();
-            listaEmpleadosController.mostrarAlerta();
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -166,7 +160,7 @@ public class MenuController {
             listaEmpleadosComunesController.setListaAdmin(listaAdmin);
             listaEmpleadosComunesController.setLstDepa(lstDepa);
             listaEmpleadosComunesController.initialize();
-            listaEmpleadosComunesController.mostrarAlerta();
+
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();

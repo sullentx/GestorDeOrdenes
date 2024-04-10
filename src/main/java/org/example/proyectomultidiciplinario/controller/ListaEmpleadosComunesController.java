@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 public class ListaEmpleadosComunesController  {
 
+    public Button btnEliminar;
+    public Button btnLimpiar;
     @FXML
     private Button btnGuardar;
 
