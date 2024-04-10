@@ -35,18 +35,14 @@ public class MenuController {
     @FXML
     private AnchorPane anchGraficaDatos;
     private ArrayList<Empleado> listaAdmin;
-    private ArrayList<Empleado>listaEmpleado;
+    private ArrayList<Empleado> listaEmpleado;
 
     private int cuentasLogeadas;
     private GestorOrdenes gestorOrdenes;
+    private ArrayList<Departamento> lstDepa;
 
 
-
-    private int cuentasLogeadas;
-    private ArrayList<Departamento>lstDepa;
-
-
-    public void ocultarForEmpleado(){
+    public void ocultarForEmpleado() {
         anchDeparamento.setDisable(true);
         achListaEmpleado.setDisable(true);
         anchGraficaDatos.setDisable(true);
@@ -65,7 +61,7 @@ public class MenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menuInicial.fxml"));
         try {
             Pane root = fxmlLoader.load();
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             MenuIncialController menuIncialController = fxmlLoader.getController();
             menuIncialController.setListaEmpleado(listaEmpleado);
             menuIncialController.setListaAdmin(listaAdmin);
@@ -79,7 +75,8 @@ public class MenuController {
         }
 
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -88,7 +85,7 @@ public class MenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("ot-view.fxml"));
         try {
             Pane root = fxmlLoader.load();
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             stage.setTitle("Registro de usuarios");
             stage.setScene(scene);
             stage.show();
@@ -97,12 +94,15 @@ public class MenuController {
             otController.setListaAdmin(listaAdmin);
             otController.setListaEmpleado(listaEmpleado);
             otController.setCuentasLogeadas(cuentasLogeadas);
+            otController.setLstDepa(lstDepa);
+
             otController.initialize();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
 
     }
 
@@ -112,9 +112,9 @@ public class MenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("agregarDepartamentos.fxml"));
         try {
             Pane root = fxmlLoader.load();
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             stage.setTitle("Registro de usuarios");
-            AgregarDepartamentosController agregarDepartamentosController =fxmlLoader.getController();
+            AgregarDepartamentosController agregarDepartamentosController = fxmlLoader.getController();
             agregarDepartamentosController.setListaAdmin(listaAdmin);
             agregarDepartamentosController.setListaEmpleado(listaEmpleado);
             agregarDepartamentosController.setLstDepa(lstDepa);
@@ -126,7 +126,8 @@ public class MenuController {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -136,9 +137,9 @@ public class MenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleados-view.fxml"));
         try {
             Pane root = fxmlLoader.load();
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             stage.setTitle("ESAB");
-            ListaEmpleadosController listaEmpleadosController =fxmlLoader.getController();
+            ListaEmpleadosController listaEmpleadosController = fxmlLoader.getController();
             listaEmpleadosController.setListaAdmin(listaAdmin);
             listaEmpleadosController.setListaEmpleado(listaEmpleado);
             listaEmpleadosController.setCuentasLogeadas(cuentasLogeadas);
@@ -151,7 +152,8 @@ public class MenuController {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -163,6 +165,10 @@ public class MenuController {
             Scene scene = new Scene(root);
             stage.setTitle("Lista de usuarios");
             listOTController listOTController = fxmlLoader.getController();
+            listOTController.setListaAdmin(listaAdmin);
+            listOTController.setListaEmpleado(listaEmpleado);
+            listOTController.setCuentasLogeadas(cuentasLogeadas);
+            listOTController.setLstDepa(lstDepa);
             GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
 
             listOTController.setLstOT(gestorOrdenes);
@@ -173,14 +179,16 @@ public class MenuController {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
+
     public void btnListaEmpleados(MouseEvent event) {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listaEmpleadosComunes.fxml"));
         try {
             Pane root = fxmlLoader.load();
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             stage.setTitle("Registro de usuarios");
             ListaEmpleadosComunesController listaEmpleadosComunesController = fxmlLoader.getController();
             listaEmpleadosComunesController.setListaEmpleado(listaEmpleado);
@@ -196,7 +204,8 @@ public class MenuController {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     public void initialize() {
@@ -204,6 +213,7 @@ public class MenuController {
         this.listaEmpleado = listaEmpleado;
         this.lstDepa = lstDepa;
     }
+
     public void setLstDepa(ArrayList<Departamento> lstDepa) {
         this.lstDepa = lstDepa;
     }
@@ -211,16 +221,18 @@ public class MenuController {
     public void setCuentasLogeadas(int cuentasLogeadas) {
         this.cuentasLogeadas = cuentasLogeadas;
     }
+
     public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
         this.listaAdmin = listaAdmin;
     }
 
-
-
-    public void setLstOT(GestorOrdenes gestorOrdenes) {
-
-    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+    public void setListaEmpleado (ArrayList<Empleado> listaEmpleado) {
         this.listaEmpleado = listaEmpleado;
 
     }
+    public void setLstOT(GestorOrdenes gestorOrdenes) {
+
+    }
+
+
 }

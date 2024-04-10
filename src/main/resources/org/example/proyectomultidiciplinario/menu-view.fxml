@@ -34,7 +34,7 @@
                 <Button fx:id="btnListaAdministradores" layoutX="19.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#btnListaAdministradores" prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver lista de Administradores" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="anchDeparamento" layoutX="657.0" layoutY="59.0" prefHeight="129.0" prefWidth="182.0">
+        <AnchorPane fx:id="anchDeparamento" layoutX="657.0" layoutY="177.0" prefHeight="129.0" prefWidth="182.0">
             <children>
                 <ImageView fitHeight="100.0" fitWidth="137.0" layoutX="49.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -64,16 +64,7 @@
                 <Button fx:id="btnVerListaOT" layoutX="33.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#btnVerListaOT" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Lista de O.T" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="anchGraficaDatos" layoutX="657.0" layoutY="271.0" prefHeight="150.0" prefWidth="203.0">
-            <children>
-                <Button fx:id="bntGraficaDatos" layoutX="41.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#bntGraficaDatos" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: rgb(34, 84, 145); -fx-background-radius: 44px;" text="Ver Grafica De Datos" />
-                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../imagenes/icons8-financial-dynamic-presentation-96.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
+        <AnchorPane fx:id="anchGraficaDatos" layoutX="657.0" layoutY="271.0" prefHeight="150.0" prefWidth="203.0" />
         <AnchorPane fx:id="achListaEmpleado1" layoutX="344.0" layoutY="60.0" prefHeight="129.0" prefWidth="175.0">
             <children>
                 <ImageView fitHeight="91.0" fitWidth="80.0" layoutX="57.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">

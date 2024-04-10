@@ -9,14 +9,16 @@ public class Empleado {
     protected String apellidoMaterno;
     protected String nombreUser;
     protected String password;
+    protected String rol;
 
 
-    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password) {
+    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password, String rol) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.nombreUser = edad;
         this.password=password;
+        this.rol=rol;
     }
 
     public Empleado() {
@@ -43,6 +45,9 @@ public class Empleado {
         this.password = password;
     }
 
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
     public String getNombreUser() {
         return nombreUser;
@@ -61,7 +66,9 @@ public class Empleado {
         return apellidoMaterno;
     }
 
-
+    public String getRol() {
+        return rol;
+    }
 
     @Override
     public boolean equals(Object o) {

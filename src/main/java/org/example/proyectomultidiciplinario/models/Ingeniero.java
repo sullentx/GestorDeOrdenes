@@ -3,8 +3,8 @@ package org.example.proyectomultidiciplinario.models;
 public class Ingeniero extends Empleado{
     private String tituloIngeniero;
 
-    public Ingeniero(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password, String tituloIngeniero) {
-        super(nombre, apellidoPaterno, apellidoMaterno, edad, password);
+    public Ingeniero(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password,String rol, String tituloIngeniero) {
+        super(nombre, apellidoPaterno, apellidoMaterno, edad, password,rol);
         this.tituloIngeniero = tituloIngeniero;
     }
 
