@@ -1,14 +1,24 @@
 package org.example.proyectomultidiciplinario.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
 import org.example.proyectomultidiciplinario.models.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.example.proyectomultidiciplinario.models.OrdenDeTrabajo;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -17,15 +27,11 @@ public class OtController implements Initializable {
 
     @FXML
     private ComboBox<String> cmbxEM;
+    @FXML
+    private ComboBox<String> cmbxDepartamento;
 
     @FXML
-    private ComboBox<String> cmbxOp1;
-
-    @FXML
-    private ComboBox<String> cmbxOp2;
-
-    @FXML
-    private ComboBox<String> cmbxOp3;
+    private ComboBox<String> cmbxOp;
 
     @FXML
     private ComboBox<String> cmbxTurno;
@@ -57,12 +63,19 @@ public class OtController implements Initializable {
     @FXML
     private TextField txtUbiEquipo;
     private int folioContador = 0;
+    private ArrayList<Empleado>listaEmpleado;
+    private ArrayList<Empleado>listaAdmin;
+    private int cuentasLogeadas;
 
+    public void setCuentasLogeadas(int cuentasLogeadas) {
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
+    public ObservableList<OrdenDeTrabajo> obtenerOrdenesTrabajo() {
+        GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
+        return FXCollections.observableArrayList(gestorOrdenes.getLstOT());
+    }
 
-    private GestorOrdenes ot = new GestorOrdenes();
-
-    GestorEmpleados empleadoDato = new GestorEmpleados();
-    ArrayList<Empleado> lstEmpleado = empleadoDato.getListaEmpleado();
+    private GestorOrdenes ot = GestorOrdenes.getInstancia();
 
 
     @FXML
@@ -82,9 +95,9 @@ public class OtController implements Initializable {
             nuevaOT.setUbicacionEquipo(txtUbiEquipo.getText());
             nuevaOT.setFallaEncontrada(txtFallaE.getText());
             nuevaOT.setFallaReportada(txtFallaR.getText());
-            cmbxOp1.getSelectionModel().getSelectedItem();
-            cmbxOp2.getSelectionModel().getSelectedItem();
-            cmbxOp3.getSelectionModel().getSelectedItem();
+            cmbxOp.getSelectionModel().getSelectedItem();
+            cmbxDepartamento.getSelectionModel().getSelectedItem();
+            cmbxEM.getSelectionModel().getSelectedItem();
             txtHoraInicio.getText();
             txtHoraFin.getText();
             String estatusSeleccionado = cmbxEstatus.getValue();
@@ -100,6 +113,11 @@ public class OtController implements Initializable {
 
             ot.agregarFolioGuardado(folio);
         } else {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Lista Repetida");
+            alerta.setHeaderText("Orden de trabajo repetida, favor de crear una nueva Orden de trabajo");
+            alerta.setContentText("La Orden de Trabajo con folio " + folio + " ya ha sido guardada.");
+            alerta.showAndWait();
             System.out.println("La Orden de Trabajo con folio " + folio + " ya ha sido guardada.");
         }
     }
@@ -107,11 +125,22 @@ public class OtController implements Initializable {
     void nuevaOT(MouseEvent event) {
 
         System.out.println("nueva OT");
+
         OrdenDeTrabajo nuevaOT = new OrdenDeTrabajo();
 
+        String nuevoFolio;
 
-        folioContador = (folioContador % 999) + 1;
-        String nuevoFolio = nuevaOT.generarFolio(folioContador);
+        if (ot.getLstOT().isEmpty()) {
+            nuevoFolio = "001";
+        } else {
+            String ultimoFolioGuardado = ot.getLstOT().get(ot.getLstOT().size() - 1).getFolio();
+            int ultimoNumeroFolio = Integer.parseInt(ultimoFolioGuardado.substring(8));
+            nuevoFolio = String.format("%03d", ultimoNumeroFolio + 1);
+        }
+
+        String fechaActual = nuevaOT.obtenerFechaActual().replace("/", "");
+        nuevoFolio = fechaActual + nuevoFolio;
+
         txtFolio.setText(nuevoFolio);
 
         txtFecha.getText();
@@ -120,15 +149,24 @@ public class OtController implements Initializable {
         txtUbiEquipo.setText("");
         txtFallaE.setText("");
         txtFallaR.setText("");
-        cmbxOp1.setValue(null);
-        cmbxOp2.setValue(null);
-        cmbxOp3.setValue(null);
+        cmbxOp.setValue(null);
+        cmbxDepartamento.setValue(null);
+        cmbxEM.setValue(null);
         txtHoraInicio.getText();
         txtHoraFin.getText();
         cmbxEstatus.setValue(null);
 
+
+       // String operadorSeleccionado = cmbxOp.getValue();
+        //nuevaOT.setOperador(operadorSeleccionado);
+
+       // String encargadoMantenimientoSeleccionado = cmbxOp.getValue();
+        //nuevaOT.setEM(encargadoMantenimientoSeleccionado);
+
+
         String estatusSeleccionado = cmbxEstatus.getValue();
         nuevaOT.setEstatus(estatusSeleccionado);
+
 
         String horaFin = nuevaOT.obtenerHoraFin();
         txtHoraFin.setText(horaFin);
@@ -136,6 +174,31 @@ public class OtController implements Initializable {
     }
 
 
+    @FXML
+    void btnRegresarMenu(MouseEvent event) {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("menu-view.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Crear OT");
+            stage.setScene(scene);
+            stage.show();
+
+            MenuController menuController = fxmlLoader.getController();
+            menuController.setListaAdmin(listaAdmin);
+            menuController.setListaEmpleado(listaEmpleado);
+            menuController.setCuentasLogeadas(cuentasLogeadas);
+            menuController.initialize();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
+
+    }
 
 
 
@@ -155,17 +218,6 @@ public class OtController implements Initializable {
         String nuevoFolio = nuevaOT.generarFolio(folioContador);
         txtFolio.setText(nuevoFolio);
 
-
-        GestorEmpleados empleadoDato = new GestorEmpleados();
-        ArrayList<Empleado> lstEmpleado = empleadoDato.getListaEmpleado();
-
-        for (Empleado empleado : lstEmpleado) {
-            cmbxOp1.getItems().add(empleado.getNombre());
-            cmbxOp2.getItems().add(empleado.getNombre());
-            cmbxOp3.getItems().add(empleado.getNombre());
-        }
-
-
         OrdenDeTrabajo fechas = new OrdenDeTrabajo();
         String fechaActual = fechas.obtenerFechaActual();
         txtFecha.setText(fechaActual);
@@ -181,8 +233,54 @@ public class OtController implements Initializable {
         OrdenDeTrabajo estatusDatos = new OrdenDeTrabajo();
         ArrayList<String> estatus = estatusDatos.getEstatus();
         cmbxEstatus.getItems().addAll("Pendiente","Pendiente Urgente","Terminado");
+        generarNuevoFolio();
+
+    }
+    private void inicializarComboBoxEmpleados() {
+        cmbxOp.getItems().clear();
+
+        if (listaEmpleado != null) {
+            for (Empleado empleado : listaEmpleado) {
+                cmbxOp.getItems().add(empleado.getNombre());
+            }
+        } else {
+            System.err.println("Error: listaEmpleado es nula");
+        }
+    }
+    private void generarNuevoFolio() {
+        OrdenDeTrabajo nuevaOT = new OrdenDeTrabajo();
+
+        String nuevoFolio;
+
+        if (ot.getLstOT().isEmpty()) {
+            nuevoFolio = "001";
+        } else {
+            String ultimoFolioGuardado = ot.getLstOT().get(ot.getLstOT().size() - 1).getFolio();
+            int ultimoNumeroFolio = Integer.parseInt(ultimoFolioGuardado.substring(8));
+            nuevoFolio = String.format("%03d", ultimoNumeroFolio + 1);
+        }
+
+        String fechaActual = nuevaOT.obtenerFechaActual().replace("/", "");
+        nuevoFolio = fechaActual + nuevoFolio;
+
+        txtFolio.setText(nuevoFolio);
 
     }
 
 
+
+    public void setListaAdmin(ArrayList<Empleado> listaAdmin) {
+        this.listaAdmin = listaAdmin;
+    }
+
+    public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+        inicializarComboBoxEmpleados();
+    }
+
+    public void initialize() {
+        this.listaAdmin = listaAdmin;
+        this.listaEmpleado = listaEmpleado;
+        this.cuentasLogeadas = cuentasLogeadas;
+    }
 }

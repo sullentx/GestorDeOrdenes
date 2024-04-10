@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
 import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
+import org.example.proyectomultidiciplinario.models.GestorOrdenes;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,9 +38,12 @@ public class MenuController {
     private ArrayList<Empleado>listaEmpleado;
 
     private int cuentasLogeadas;
+    private GestorOrdenes gestorOrdenes;
+
+
+
+    private int cuentasLogeadas;
     private ArrayList<Departamento>lstDepa;
-
-
 
 
     public void ocultarForEmpleado(){
@@ -88,11 +92,18 @@ public class MenuController {
             stage.setTitle("Registro de usuarios");
             stage.setScene(scene);
             stage.show();
+
+            OtController otController = fxmlLoader.getController();
+            otController.setListaAdmin(listaAdmin);
+            otController.setListaEmpleado(listaEmpleado);
+            otController.setCuentasLogeadas(cuentasLogeadas);
+            otController.initialize();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
         stage = (Stage) source.getScene().getWindow();stage.close();
+
     }
 
     @FXML
@@ -144,8 +155,25 @@ public class MenuController {
     }
 
     @FXML
-    void btnVerListaOT(MouseEvent event) {
+    public void btnVerListaOT(MouseEvent event) {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(GestorOrdenesApplication.class.getResource("listOT-view.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Lista de usuarios");
+            listOTController listOTController = fxmlLoader.getController();
+            GestorOrdenes gestorOrdenes = GestorOrdenes.getInstancia();
 
+            listOTController.setLstOT(gestorOrdenes);
+            listOTController.initialize();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();stage.close();
     }
     public void btnListaEmpleados(MouseEvent event) {
         Stage stage = new Stage();
@@ -187,7 +215,12 @@ public class MenuController {
         this.listaAdmin = listaAdmin;
     }
 
+
+
+    public void setLstOT(GestorOrdenes gestorOrdenes) {
+
     public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
         this.listaEmpleado = listaEmpleado;
+
     }
 }
