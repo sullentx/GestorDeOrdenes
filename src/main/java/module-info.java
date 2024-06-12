@@ -2,6 +2,7 @@ module org.example.proyectomultidiciplinario {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires java.sql;
 
 
     opens org.example.proyectomultidiciplinario to javafx.fxml;

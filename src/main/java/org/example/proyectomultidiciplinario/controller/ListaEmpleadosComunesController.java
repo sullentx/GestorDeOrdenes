@@ -18,13 +18,12 @@ import org.example.proyectomultidiciplinario.models.Empleado;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ListaEmpleadosComunesController  {
+public class ListaEmpleadosComunesController {
 
     public Button btnEliminar;
     public Button btnLimpiar;
     @FXML
     private Button btnGuardar;
-
 
     @FXML
     private TextField txtApeMaterno;
@@ -50,7 +49,6 @@ public class ListaEmpleadosComunesController  {
 
     private ArrayList<Departamento>lstDepa;
 
-
     @FXML
     void btnLimpiar(MouseEvent event) {
         txtNombre.clear();
@@ -59,34 +57,59 @@ public class ListaEmpleadosComunesController  {
         txtNameUser.clear();
         txtPassword.clear();
     }
-
     @FXML
     void btnModificar(MouseEvent event) {
         int selectedIndex = ltsEmpleados.getSelectionModel().getSelectedIndex();
-
         if (selectedIndex >= 0) {
             Empleado empleadoSeleccionado = listaEmpleado.get(selectedIndex);
-
             txtNombre.setText(empleadoSeleccionado.getNombre());
             txtApePaterno.setText(empleadoSeleccionado.getApellidoPaterno());
             txtApeMaterno.setText(empleadoSeleccionado.getApellidoMaterno());
             txtNameUser.setText(empleadoSeleccionado.getNombreUser());
             txtPassword.setText(empleadoSeleccionado.getPassword());
             btnGuardar.setOnAction(e -> {
-                empleadoSeleccionado.setNombre(txtNombre.getText());
-                empleadoSeleccionado.setApellidoPaterno(txtApePaterno.getText());
-                empleadoSeleccionado.setApellidoMaterno(txtApeMaterno.getText());
-                empleadoSeleccionado.setNombreUser(txtNameUser.getText());
-                empleadoSeleccionado.setPassword(txtPassword.getText());
-                ltsEmpleados.getItems().set(selectedIndex, empleadoSeleccionado.toString());
-                listaEmpleado.set(selectedIndex, empleadoSeleccionado);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Modificado");
-                alert.setHeaderText(null);
-                alert.setContentText("Empleado modificado con éxito.");
-                alert.showAndWait();
-                actualizarLista();
+                if (txtNombre.getText().isEmpty()||txtApePaterno.getText().isEmpty()||txtApeMaterno.getText().isEmpty()||
+                        txtNameUser.getText().isEmpty()||txtPassword.getText().isEmpty()){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Campos Vacios");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Rellenar espacios vacios.");
+                    alert.showAndWait();
+                    actualizarLista();
+                }else{
+                    boolean existe = false;
+                    String nombreUsuario = txtNameUser.getText();
+                    for (Empleado empleado : listaEmpleado) {
+                        String nombreUserEmpleado = empleado.getNombreUser();
+                        if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
+                            existe = true;
+                        }
+                    }
+                    if (existe) {
+                        Alert alerta = new Alert(Alert.AlertType.ERROR);
+                        alerta.setTitle("Error");
+                        alerta.setHeaderText("Nombre de usuario existente");
+                        alerta.setContentText("El nombre de usuario ingresado ya está en uso.");
+                        alerta.showAndWait();
+                    }else{
+                        empleadoSeleccionado.setNombre(txtNombre.getText());
+                        empleadoSeleccionado.setApellidoPaterno(txtApePaterno.getText());
+                        empleadoSeleccionado.setApellidoMaterno(txtApeMaterno.getText());
+                        empleadoSeleccionado.setNombreUser(txtNameUser.getText());
+                        empleadoSeleccionado.setPassword(txtPassword.getText());
+                        ltsEmpleados.getItems().set(selectedIndex, empleadoSeleccionado.toString());
+                        listaEmpleado.set(selectedIndex, empleadoSeleccionado);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Modificado");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Empleado modificado con éxito.");
+                        alert.showAndWait();
+                        actualizarLista();
+                    }
+                }
             });
+
+
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ningún elemento seleccionado");
@@ -120,7 +143,6 @@ public class ListaEmpleadosComunesController  {
             alert.showAndWait();
         }
     }
-
 
 
     @FXML

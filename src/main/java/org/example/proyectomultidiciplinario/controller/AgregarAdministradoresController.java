@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class AgregarAdministradoresController {
 
-
     private ArrayList<Empleado> listaEmpleado;
     private ArrayList<Empleado> listaAdmin;
 
@@ -77,7 +76,6 @@ public class AgregarAdministradoresController {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
-                        break;
                     }
                 }
                 if (existe) {
@@ -136,7 +134,6 @@ public class AgregarAdministradoresController {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
-                        break;
                     }
                 }
                 if (existe) {

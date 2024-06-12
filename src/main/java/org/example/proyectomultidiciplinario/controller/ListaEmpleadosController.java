@@ -77,6 +77,30 @@ public class ListaEmpleadosController  {
             txtNameUser.setText(empleadoSeleccionado.getNombreUser());
             txtPassword.setText(empleadoSeleccionado.getPassword());
                 btnGuardar.setOnAction(e -> {
+                    if (txtNombre.getText().isEmpty()||txtApePaterno.getText().isEmpty()||txtApeMaterno.getText().isEmpty()||
+                            txtNameUser.getText().isEmpty()||txtPassword.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Campos Vacios");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Rellenar espacios vacios.");
+                        alert.showAndWait();
+                        actualizarLista();
+                    }else{
+                    boolean existe = false;
+                    String nombreUsuario = txtNameUser.getText();
+                    for (Empleado empleado : listaAdmin) {
+                        String nombreUserEmpleado = empleado.getNombreUser();
+                        if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
+                            existe = true;
+                        }
+                    }
+                    if (existe) {
+                        Alert alerta = new Alert(Alert.AlertType.ERROR);
+                        alerta.setTitle("Error");
+                        alerta.setHeaderText("Nombre de usuario existente");
+                        alerta.setContentText("El nombre de usuario ingresado ya está en uso.");
+                        alerta.showAndWait();
+                    }else{
                 empleadoSeleccionado.setNombre(txtNombre.getText());
                 empleadoSeleccionado.setApellidoPaterno(txtApePaterno.getText());
                 empleadoSeleccionado.setApellidoMaterno(txtApeMaterno.getText());
@@ -90,7 +114,11 @@ public class ListaEmpleadosController  {
                 alert.setContentText("Empleado modificado con éxito.");
                 alert.showAndWait();
                 actualizarLista();
-            });
+            }
+                }
+                });
+
+
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ningún elemento seleccionado");

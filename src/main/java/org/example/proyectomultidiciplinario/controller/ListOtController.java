@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class listOTController implements Initializable {
+public class ListOtController implements Initializable {
 
 
     @FXML
