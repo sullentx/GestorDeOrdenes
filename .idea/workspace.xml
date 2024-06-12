@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cadea6a5-3a90-415e-804a-2f4cb628c9b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/models/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarAdministradoresController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarAdministradoresController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarDepartamentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarDepartamentosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosComunesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosComunesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginAdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginAdministradorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginEmpleadoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroAdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroAdministradorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroEmpleadoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/listOTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListOtController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/models/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/models/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/agregarDepartamentos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/agregarDepartamentos.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/listOT-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/listOT-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cadea6a5-3a90-415e-804a-2f4cb628c9b9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +112,7 @@
       <workItem from="1717093480200" duration="774000" />
       <workItem from="1717120177932" duration="217000" />
       <workItem from="1717816628801" duration="310000" />
-      <workItem from="1718170580891" duration="6586000" />
+      <workItem from="1718170580891" duration="6938000" />
     </task>
     <servers />
   </component>
