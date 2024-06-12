@@ -76,7 +76,7 @@ public class RegistroEmpleadoController {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
-                        break;
+
                     }
                 }
                 if (existe) {
@@ -136,7 +136,7 @@ public class RegistroEmpleadoController {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
-                        break;
+
                     }
                 }
                 if (existe) {

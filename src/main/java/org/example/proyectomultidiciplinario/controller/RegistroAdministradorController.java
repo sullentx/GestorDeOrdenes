@@ -72,7 +72,6 @@ public class RegistroAdministradorController  {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
-                        break;
                     }
                 }
 
@@ -133,7 +132,7 @@ public class RegistroAdministradorController  {
                     String nombreUserEmpleado = empleado.getNombreUser();
                     if (nombreUserEmpleado != null && nombreUserEmpleado.equals(nombreUsuario)) {
                         existe = true;
-                        break;
+
                     }
                 }
 

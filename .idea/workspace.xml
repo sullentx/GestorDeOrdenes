@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cadea6a5-3a90-415e-804a-2f4cb628c9b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/models/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarAdministradoresController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarAdministradoresController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarDepartamentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/AgregarDepartamentosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosComunesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosComunesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListaEmpleadosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginAdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginAdministradorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/LoginEmpleadoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroAdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroAdministradorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/RegistroEmpleadoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/listOTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/controller/ListOtController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/models/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/proyectomultidiciplinario/models/Empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/agregarDepartamentos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/agregarDepartamentos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/listOT-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/proyectomultidiciplinario/listOT-view.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2eushlUQdehgLnmc0VwqwN1l8ja" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GestorOrdenesApplication.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "2-testing",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/eduar/Desktop/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="GestorOrdenesApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.proyectomultidiciplinario.GestorOrdenesApplication" />
+      <module name="ProyectoMultidiciplinario" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.proyectomultidiciplinario.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GestorOrdenesApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cadea6a5-3a90-415e-804a-2f4cb628c9b9" name="Changes" comment="" />
+      <created>1712765918265</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712765918265</updated>
+      <workItem from="1712765919368" duration="68000" />
+      <workItem from="1712768545726" duration="87000" />
+      <workItem from="1712799975838" duration="1594000" />
+      <workItem from="1712846737922" duration="140000" />
+      <workItem from="1712870537457" duration="1623000" />
+      <workItem from="1712884312103" duration="9000" />
+      <workItem from="1712903809782" duration="291000" />
+      <workItem from="1713132514489" duration="6000" />
+      <workItem from="1713137123042" duration="3000" />
+      <workItem from="1713137564748" duration="415000" />
+      <workItem from="1713138009822" duration="111000" />
+      <workItem from="1713139147668" duration="420000" />
+      <workItem from="1713140056021" duration="1734000" />
+      <workItem from="1713232959737" duration="12000" />
+      <workItem from="1713236871697" duration="606000" />
+      <workItem from="1713239197469" duration="7000" />
+      <workItem from="1713239448485" duration="1381000" />
+      <workItem from="1713247206424" duration="29000" />
+      <workItem from="1713247244294" duration="549000" />
+      <workItem from="1713554733378" duration="535000" />
+      <workItem from="1713760881268" duration="115000" />
+      <workItem from="1713761065546" duration="219000" />
+      <workItem from="1714745330032" duration="295000" />
+      <workItem from="1714745674741" duration="248000" />
+      <workItem from="1714745970511" duration="102000" />
+      <workItem from="1715200237269" duration="2735000" />
+      <workItem from="1715278896920" duration="1311000" />
+      <workItem from="1715695754757" duration="18000" />
+      <workItem from="1715814031739" duration="119000" />
+      <workItem from="1716681236857" duration="641000" />
+      <workItem from="1717093480200" duration="774000" />
+      <workItem from="1717120177932" duration="217000" />
+      <workItem from="1717816628801" duration="310000" />
+      <workItem from="1718170580891" duration="6586000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -12,6 +12,8 @@ public class Empleado {
     protected String rol;
 
 
+
+
     public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String edad, String password, String rol) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;

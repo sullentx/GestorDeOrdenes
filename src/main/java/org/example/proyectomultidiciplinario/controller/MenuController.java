@@ -1,14 +1,9 @@
 package org.example.proyectomultidiciplinario.controller;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -166,7 +161,7 @@ public class MenuController {
             Pane root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setTitle("Lista de usuarios");
-            listOTController listOTController = fxmlLoader.getController();
+            ListOtController listOTController = fxmlLoader.getController();
             listOTController.setListaAdmin(listaAdmin);
             listOTController.setListaEmpleado(listaEmpleado);
             listOTController.setCuentasLogeadas(cuentasLogeadas);

@@ -13,11 +13,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.proyectomultidiciplinario.GestorOrdenesApplication;
+import org.example.proyectomultidiciplinario.models.DataBase;
 import org.example.proyectomultidiciplinario.models.Departamento;
 import org.example.proyectomultidiciplinario.models.Empleado;
 
 import java.io.IOException;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -37,8 +41,9 @@ public class AgregarDepartamentosController  {
 
     private int cuentasLogeadas;
     private ArrayList<Departamento>lstDepa;
-
-
+    @FXML
+    private Button btnDelete;
+    DataBase dataBase = new DataBase();
     @FXML
     void btnGuardar(MouseEvent event) {
         int idAleatorio;
@@ -54,7 +59,19 @@ public class AgregarDepartamentosController  {
             items.add(departamento1.toString());
         }
         ltsvDepartamento.setItems(items);
+
+        try (Connection connection = dataBase.getConnection()) {
+            String sql = "INSERT INTO department (departement_id, department_name) VALUES (?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, idAleatorio);
+            statement.setString(2, txtNombre.getText());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
+
 
     @FXML
     void btnModificar(MouseEvent event) {
@@ -63,22 +80,67 @@ public class AgregarDepartamentosController  {
         if (selectedIndex >= 0) {
             Departamento depaSeleccionado = lstDepa.get(selectedIndex);
             txtNombre.setText(depaSeleccionado.getNombreDepartamento());
+
             btnGuardar.setOnAction(e -> {
                 depaSeleccionado.setNombreDepartamento(txtNombre.getText());
                 ltsvDepartamento.getItems().set(selectedIndex, depaSeleccionado.toString());
                 lstDepa.set(selectedIndex, depaSeleccionado);
+
+                // Actualizar en la base de datos
+                try (Connection connection = dataBase.getConnection()) {
+                    String sql = "UPDATE department SET department_name = ? WHERE departement_id = ?";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, depaSeleccionado.getNombreDepartamento());
+                    statement.setInt(2, depaSeleccionado.getIdDepartamento());
+                    statement.executeUpdate();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Modificado");
                 alert.setHeaderText(null);
-                alert.setContentText("Empleado modificado con éxito.");
+                alert.setContentText("Departamento modificado con éxito.");
                 alert.showAndWait();
                 txtNombre.clear();
             });
-    }else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ningún elemento seleccionado");
             alert.setHeaderText(null);
-            alert.setContentText("Por favor, selecciona un empleado para modificar.");
+            alert.setContentText("Por favor, selecciona un departamento para modificar.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    void btnDelete(MouseEvent event) {
+        int selectedIndex = ltsvDepartamento.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Departamento depaSeleccionado = lstDepa.get(selectedIndex);
+
+            // Eliminar de la base de datos
+            try (Connection connection = dataBase.getConnection()) {
+                String sql = "DELETE FROM department WHERE departement_id = ?";
+                PreparedStatement statement = connection.prepareStatement(sql);
+                statement.setInt(1, depaSeleccionado.getIdDepartamento());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            ltsvDepartamento.getItems().remove(selectedIndex);
+            lstDepa.remove(selectedIndex);
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Eliminado");
+            alert.setHeaderText(null);
+            alert.setContentText("Eliminado Correctamente");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ningún elemento seleccionado");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona un elemento para eliminar.");
             alert.showAndWait();
         }
     }
@@ -119,15 +181,38 @@ public class AgregarDepartamentosController  {
 
     @FXML
     void btnMostrarLista(MouseEvent event) {
+        // Actualizar la lista desde la base de datos
+        obtenerDatosDesdeBD();
         actualizar();
     }
 
-    public void actualizar(){
+    public void actualizar() {
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Departamento departamento: lstDepa) {
+        for (Departamento departamento : lstDepa) {
             items.add(departamento.toString());
         }
         ltsvDepartamento.setItems(items);
+    }
+    public void obtenerDatosDesdeBD() {
+        // Limpiar la lista antes de cargar nuevos datos
+        lstDepa.clear();
+
+        try (Connection connection = dataBase.getConnection()) {
+            String sql = "SELECT departement_id, department_name FROM department";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int idDepartamento = resultSet.getInt("departement_id");
+                String nombreDepartamento = resultSet.getString("department_name");
+                Departamento departamento = new Departamento();
+                departamento.setIdDepartamento(idDepartamento);
+                departamento.setNombreDepartamento(nombreDepartamento);
+                lstDepa.add(departamento);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean idRepetido(int id) {

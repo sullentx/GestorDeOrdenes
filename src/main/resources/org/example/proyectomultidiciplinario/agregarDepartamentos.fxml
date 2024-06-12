@@ -26,5 +26,6 @@
       </AnchorPane>
       <ListView fx:id="ltsvDepartamento" layoutX="176.0" layoutY="128.0" onMouseClicked="#ltsvDepartamento" prefHeight="200.0" prefWidth="186.0" />
       <Button fx:id="btnMostrarLista" layoutX="218.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#btnMostrarLista" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Mostrar Lista" />
+      <Button fx:id="btnDelete" layoutX="405.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#btnDelete" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: ffffff; -fx-background-radius: 44px;" text="Eliminar" />
    </children>
 </AnchorPane>
